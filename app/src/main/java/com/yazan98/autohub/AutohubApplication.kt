@@ -76,16 +76,22 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 handleDatabaseError(ex.message)
             }
 
-            if (ApplicationPrefs.getToken().isNotEmpty()) {
-                githubStarter = GithubStarter(ApplicationPrefs.getToken()).apply {
-                    this.startActions()
-                }
-            }
+            startGithubActions()
         }
 
         startKoin {
             androidLogger(Level.DEBUG)
             modules(appModules)
+        }
+    }
+
+    suspend fun startGithubActions() {
+        withContext(Dispatchers.IO) {
+            if (ApplicationPrefs.getToken().isNotEmpty()) {
+                githubStarter = GithubStarter(ApplicationPrefs.getUsername()).apply {
+                    this.startActions()
+                }
+            }
         }
     }
 

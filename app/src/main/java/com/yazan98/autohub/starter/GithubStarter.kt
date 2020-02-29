@@ -7,6 +7,7 @@ import com.yazan98.data.models.GithubUser
 import com.yazan98.data.repos.ProfileRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class GithubStarter(private val username: String): GithubStarterImpl {
 
@@ -22,11 +23,16 @@ class GithubStarter(private val username: String): GithubStarterImpl {
 
     override suspend fun startSaveFollowings() {
         withContext(Dispatchers.Main) {
-            profileRepository.getFollowingByToken(username).subscribe {
+            profileRepository.getFollowingByToken().subscribe({
                 DatabaseFollowingRepository().apply {
                     this.sageEntities(getLocalAccountsByResponse(it))
                 }
-            }
+            }, {
+                it.printStackTrace()
+                it.message?.let {
+                    Timber.d("The Response : Error : $it")
+                }
+            })
         }
     }
 
@@ -39,7 +45,6 @@ class GithubStarter(private val username: String): GithubStarterImpl {
         }
         return response
     }
-
 
     override suspend fun startSaveFollowers() {
         withContext(Dispatchers.Main) {

@@ -127,9 +127,4 @@ class GithubAuthRepository(private val context: Context, private val listener: G
         return csvString
     }
 
-
-    object ResultCode {
-        val SUCCESS = 1
-        val ERROR = 2
-    }
 }
