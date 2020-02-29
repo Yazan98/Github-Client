@@ -1,0 +1,51 @@
+/**
+ * Room Database Schema Location
+ */
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
+    }
+}
+
+dependencies { configuration ->
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    rxJavaConfiguration(configuration)
+    retrofitConfiguration(configuration)
+    vortexConfiguration(configuration)
+    lifeCycleConfiguration(configuration)
+    databaseConfiguration(configuration)
+
+    def work_version = "2.3.0"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    implementation "androidx.work:work-rxjava2:$work_version"
+    implementation "androidx.work:work-gcm:$work_version"
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+}
+
+private void rxJavaConfiguration(configuration) {
+    def RxConfiguration = rootProject.ext.RxConfiguration
+    configuration.implementation RxConfiguration.RxJava
+    configuration.implementation RxConfiguration.RxAndroid
+}
+
+private void retrofitConfiguration(configuration) {
+    def DataConfiguration = rootProject.ext.DataConfiguration
+    configuration.implementation DataConfiguration.Retrofit
+    configuration.implementation DataConfiguration.RetrofitRxJavaAdapter
+    configuration.implementation DataConfiguration.RetrofitIntercenptor
+    configuration.implementation DataConfiguration.retrofitGsonConverter
+}
+
+private void vortexConfiguration(configuration) {
+    def VortexConfiguration = rootProject.ext.VortexConfiguration
+    configuration.implementation VortexConfiguration.VortexCore
+    configuration.implementation VortexConfiguration.VortexData
+    configuration.implementation VortexConfiguration.VortexPrefs
+}
