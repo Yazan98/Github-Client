@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".screen.MainScreen" />
+        <activity android:name=".screen.RegisterScreen" />
+        <activity android:name=".screen.GithubAuthScreen" />
+
     </application>
 
 </manifest>

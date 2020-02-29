@@ -67,6 +67,8 @@ android {
             ext.alwaysUpdateBuildId = false
 //            signingConfig signingConfigs.debug
             buildConfigField "String", "BASE_URL", "\"${ApiUrl}\""
+            buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
+            buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
             proguardFiles getDefaultProguardFile("${rootProject.ext.ProguardFile}"), "${rootProject.ext.Proguard}"
         }
 
@@ -76,6 +78,8 @@ android {
             ext.alwaysUpdateBuildId = false
             ext.enableCrashlytics = true
 //            signingConfig signingConfigs.release
+            buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
+            buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
             proguardFiles getDefaultProguardFile("${rootProject.ext.ProguardFile}"), "${rootProject.ext.Proguard}"
         }
 
