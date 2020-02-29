@@ -23,6 +23,8 @@ android {
         versionName "${rootProject.ext.ApplicationVersion}"
         testInstrumentationRunner "${rootProject.ext.AndroidTest}"
         resConfigs "en", "ar"
+        buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
+        buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
         testInstrumentationRunnerArgument "${rootProject.ext.AndroidRunnerArgument}", "${rootProject.ext.LeakCanaryListener}"
         javaCompileOptions {
             annotationProcessorOptions {
