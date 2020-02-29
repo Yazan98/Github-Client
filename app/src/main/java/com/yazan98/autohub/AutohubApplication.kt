@@ -76,8 +76,8 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 handleDatabaseError(ex.message)
             }
 
-            if (ApplicationPrefs.getUsername().isNotEmpty()) {
-                githubStarter = GithubStarter(ApplicationPrefs.getUsername()).apply {
+            if (ApplicationPrefs.getToken().isNotEmpty()) {
+                githubStarter = GithubStarter(ApplicationPrefs.getToken()).apply {
                     this.startActions()
                 }
             }
