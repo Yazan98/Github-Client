@@ -5,7 +5,8 @@ import com.google.firebase.FirebaseApp
 import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
 import com.yazan98.data.ApplicationPrefs
-import com.yazan98.domain.models.HomeViewModel
+import com.yazan98.domain.models.NotificationsViewModel
+import com.yazan98.domain.models.StarsViewModel
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.vortex.android.keys.ImageLoader
@@ -98,7 +99,8 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     }
 
     private val appModules: Module = module {
-        viewModel { HomeViewModel() }
+        viewModel { NotificationsViewModel() }
+        viewModel { StarsViewModel() }
     }
 
     private suspend fun configNotifications() {

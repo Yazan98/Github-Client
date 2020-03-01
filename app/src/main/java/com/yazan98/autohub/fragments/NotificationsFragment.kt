@@ -9,11 +9,10 @@ import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.NotificationsAdapter
 import com.yazan98.autohub.adapters.listeners.NotificationListener
 import com.yazan98.autohub.dialogs.RepositoryDialog
-import com.yazan98.autohub.utils.ApplicationUtils
 import com.yazan98.data.models.GithubNotification
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.domain.actions.HomeAction
-import com.yazan98.domain.models.HomeViewModel
+import com.yazan98.domain.models.NotificationsViewModel
 import com.yazan98.domain.state.HomeState
 import io.vortex.android.ui.VortexErrorType
 import io.vortex.android.ui.fragment.VortexFragment
@@ -26,9 +25,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NotificationsFragment : VortexFragment<HomeState, HomeAction, HomeViewModel>() {
+class NotificationsFragment : VortexFragment<HomeState, HomeAction, NotificationsViewModel>() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: NotificationsViewModel by viewModels()
     private val repositoryDialog: RepositoryDialog by lazy {
         RepositoryDialog()
     }
@@ -37,7 +36,7 @@ class NotificationsFragment : VortexFragment<HomeState, HomeAction, HomeViewMode
         return R.layout.fragment_main
     }
 
-    override suspend fun getController(): HomeViewModel {
+    override suspend fun getController(): NotificationsViewModel {
         return viewModel
     }
 

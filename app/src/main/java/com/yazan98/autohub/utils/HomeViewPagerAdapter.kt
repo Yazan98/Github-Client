@@ -4,16 +4,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.yazan98.autohub.fragments.NotificationsFragment
+import com.yazan98.autohub.fragments.StartsFragment
 
 class HomeViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            1 -> NotificationsFragment()
+            0 -> NotificationsFragment()
+            1 -> StartsFragment()
             else -> NotificationsFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 1
+        return 2
     }
+
 }
