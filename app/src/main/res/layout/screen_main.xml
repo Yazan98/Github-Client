@@ -44,7 +44,7 @@
         android:src="@drawable/ic_account"
         android:tint="@color/colorPrimary"
         android:background="@color/colorPrimary"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         app:fabCradleRoundedCornerRadius="@dimen/_40sdp"
         app:fabAnimationMode="scale"

@@ -6,6 +6,7 @@ import retrofit2.http.GET
 
 interface HomeScreenApi {
 
-    @GET("notifications")
+    @GET("notifications?all=true")
     fun getNotifications(): Flowable<List<GithubNotification>>
+
 }

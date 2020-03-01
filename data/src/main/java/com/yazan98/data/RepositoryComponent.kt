@@ -3,6 +3,7 @@ package com.yazan98.data
 
 import io.vortex.android.prefs.VortexPrefsConfig
 import io.vortex.android.prefs.VortexPrefsConsts
+import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,7 +36,8 @@ interface RepositoryComponent {
                 val request =
                     chain.request()
                         .newBuilder()
-                        .addHeader("Authorization", "token ${ApplicationPrefs.getToken()}")
+//                        .addHeader("Authorization", "token ${ApplicationPrefs.getToken()}")
+                        .addHeader("Authorization", Credentials.basic("Yazan98", "Yazan1998005"))
                         .build()
                 chain.proceed(request)
             }

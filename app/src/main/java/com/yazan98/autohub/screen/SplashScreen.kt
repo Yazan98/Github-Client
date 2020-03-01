@@ -13,6 +13,7 @@ class SplashScreen : VortexScreen() {
     override fun onStart() {
         super.onStart()
         lifecycleScope.launch {
+            VortexPrefs.saveUserStatus(true)
             VortexPrefs.getUserStatus()?.also {
                 when (it) {
                     true -> startScreen<MainScreen>(true)

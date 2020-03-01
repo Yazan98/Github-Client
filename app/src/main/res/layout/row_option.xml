@@ -3,22 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="@dimen/_10sdp"
+    android:id="@+id/NotificationItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:layout_width="@dimen/_30sdp"
         android:id="@+id/OptionIcon"
-        android:scaleType="center"
-        app:placeholderImage="@drawable/ic_user"
-        android:layout_height="@dimen/_30sdp"/>
-
-    <TextView
-        android:layout_width="match_parent"
         android:layout_gravity="center"
         android:padding="@dimen/_5sdp"
-        android:id="@+id/OptionName"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="@dimen/_30sdp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/RepositoryName"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/OptionName"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="@dimen/_10sdp"
+                app:roundedCornerRadius="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:id="@+id/RepoOwnerImageIcon"
+                android:layout_height="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:id="@+id/ReasonNotification"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/_10sdp"
+        android:layout_weight="0"
+        android:id="@+id/NotificationStatus"
+        android:layout_height="@dimen/_10sdp"/>
 
 </LinearLayout>

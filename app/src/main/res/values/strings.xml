@@ -5,4 +5,5 @@
     <string name="home">Home</string>
     <string name="notifi">Notification</string>
     <string name="search">Search</string>
+    <string name="view_repo">View Notification Info</string>
 </resources>

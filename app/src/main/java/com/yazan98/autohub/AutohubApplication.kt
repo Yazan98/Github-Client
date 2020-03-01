@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseApp
 import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
 import com.yazan98.data.ApplicationPrefs
+import com.yazan98.domain.models.HomeViewModel
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.vortex.android.keys.ImageLoader
@@ -22,6 +23,7 @@ import kotlinx.coroutines.withContext
 import leakcanary.AppWatcher
 import leakcanary.LeakCanary
 import org.koin.android.ext.koin.androidLogger
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -96,7 +98,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     }
 
     private val appModules: Module = module {
-
+        viewModel { HomeViewModel() }
     }
 
     private suspend fun configNotifications() {
