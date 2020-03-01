@@ -25,6 +25,14 @@ class RepositoryAdapter @Inject constructor(private val data: List<GithubReposit
         holder.name?.let {
             it.text = data[position].name
         }
+
+        holder.description?.let {
+            it.text = data[position].description
+        }
+
+        holder.langauge?.let {
+            it.text = data[position].language
+        }
     }
 
 }
