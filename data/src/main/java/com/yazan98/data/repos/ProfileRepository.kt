@@ -13,6 +13,10 @@ class ProfileRepository : GithubRepository<ProfileApi>() , ProfileApi {
         getServiceProvider(VortexServiceProviderType.REACTIVE_FULL).create(ProfileApi::class.java)
     }
 
+    override fun getServiceProvider(): ProfileApi {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override suspend fun getService(): ProfileApi {
         return serviceProvider.create(ProfileApi::class.java)
     }

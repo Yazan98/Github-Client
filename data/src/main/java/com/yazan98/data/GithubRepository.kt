@@ -27,4 +27,10 @@ abstract class GithubRepository<Api> : VortexRepository<Api>() {
     override fun getServiceProvider(type: VortexServiceProviderType): Retrofit {
         return retrofitFactory.getRetrofitConfiguration()
     }
+
+    override suspend fun getService(): Api {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    abstract fun getServiceProvider(): Api
 }

@@ -2,4 +2,7 @@
     <string name="app_name">Auto Hub</string>
     <string name="welcome_to_autohub_github_client_to_manage_show_github_account_info_with_without_internet_click_continue_to_login_into_your_account">Welcome To Autohub (Github Client) To Manage, Show Github Account Info With / Without Internet Click Continue To Login into Your Account</string>
     <string name="continue_button">Continue</string>
+    <string name="home">Home</string>
+    <string name="notifi">Notification</string>
+    <string name="search">Search</string>
 </resources>

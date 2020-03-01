@@ -8,6 +8,7 @@ import io.realm.annotations.RealmClass
 open class GithubAccount : RealmObject() {
 
     @PrimaryKey
+    var id: Long = 0
     var login: String = "" 
     var avatar_url: String = "" 
     var url: String = "" 
