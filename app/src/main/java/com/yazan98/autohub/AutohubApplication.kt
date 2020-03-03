@@ -6,6 +6,7 @@ import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
 import com.yazan98.data.ApplicationPrefs
 import com.yazan98.domain.models.NotificationsViewModel
+import com.yazan98.domain.models.ProfileViewModel
 import com.yazan98.domain.models.StarsViewModel
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -101,6 +102,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     private val appModules: Module = module {
         viewModel { NotificationsViewModel() }
         viewModel { StarsViewModel() }
+        viewModel { ProfileViewModel() }
     }
 
     private suspend fun configNotifications() {

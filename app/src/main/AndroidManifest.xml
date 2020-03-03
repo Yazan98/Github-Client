@@ -32,6 +32,7 @@
         <activity android:name=".screen.MainScreen" />
         <activity android:name=".screen.RegisterScreen" />
         <activity android:name=".screen.GithubAuthScreen" />
+        <activity android:name=".screen.ProfileScreen" />
 
     </application>
 

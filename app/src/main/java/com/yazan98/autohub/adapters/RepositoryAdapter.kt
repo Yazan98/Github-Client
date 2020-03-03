@@ -30,7 +30,7 @@ class RepositoryAdapter @Inject constructor(private val data: List<GithubReposit
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.name?.let {
-            it.text = data[position].name
+            it.text = data[position].full_name
         }
 
         holder.description?.let {
@@ -55,6 +55,12 @@ class RepositoryAdapter @Inject constructor(private val data: List<GithubReposit
         data[position].language?.apply {
             holder.lineColor?.let {
                 it.setBackgroundResource(LanguageColorUtils.getColorByLanguage(this))
+            }
+        }
+
+        data[position].license?.let { result ->
+            holder.license?.let {
+                it.text = "License: ${result.name}"
             }
         }
 

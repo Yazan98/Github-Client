@@ -6,4 +6,6 @@
     <string name="notifi">Notification</string>
     <string name="search">Search</string>
     <string name="view_repo">View Notification Info</string>
+    <string name="profile">Profile</string>
+    <string name="repositories">Repositories</string>
 </resources>

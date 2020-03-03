@@ -15,7 +15,7 @@ data class GithubRepositoryModel(
     var has_issues: Boolean = false,
     var has_projects: Boolean = false,
     var open_issues_count: Long = 0,
-    var license: GithubProjectLicense,
+    var license: GithubProjectLicense?,
     var forks: Long = 0,
     var watchers: Long = 0,
     var default_branch: String = "",
