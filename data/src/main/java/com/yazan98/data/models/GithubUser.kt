@@ -18,5 +18,6 @@ data class GithubUser(
     var followers: Long = 0,
     var following: Long,
     var created_at: String = "",
-    var updated_at: String = ""
+    var updated_at: String = "",
+    var total_private_repos: Long = 0
 )

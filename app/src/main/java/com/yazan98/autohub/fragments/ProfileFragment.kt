@@ -99,6 +99,14 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
             ProfileId?.let {
                 it.text = profile.login
             }
+
+            FollowProfile?.let {
+                it.text = "${profile.followers}: Followers  ${profile.following}: Following"
+            }
+
+            ReposCount?.let {
+                it.text = "Repositories : ${profile.public_repos + profile.total_private_repos}"
+            }
         }
     }
 

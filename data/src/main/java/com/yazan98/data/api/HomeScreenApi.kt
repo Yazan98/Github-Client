@@ -18,7 +18,7 @@ interface HomeScreenApi {
     @GET("user")
     fun getProfileInfo(): Flowable<GithubUser>
 
-    @GET("user/repos")
+    @GET("user/repos?type=all")
     fun getRepositories(@Query("sort") sort: String = "updated"): Flowable<List<GithubRepositoryModel>>
 
 }

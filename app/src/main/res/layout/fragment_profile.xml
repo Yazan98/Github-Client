@@ -41,34 +41,34 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:padding="@dimen/_10sdp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
-                        android:layout_width="@dimen/_60sdp"
-                        app:roundedCornerRadius="@dimen/_60sdp"
                         android:id="@+id/ProfileIcon"
-                        android:layout_height="@dimen/_60sdp"/>
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        app:roundedCornerRadius="@dimen/_60sdp" />
 
                     <TextView
                         android:id="@+id/ProfileName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:singleLine="true"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_18sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ProfileIcon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/ProfileId"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ProfileId"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/ProfileIcon"
                         app:layout_constraintTop_toBottomOf="@+id/ProfileName" />
@@ -84,6 +84,24 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/ProfileIcon"
                         app:layout_constraintTop_toBottomOf="@+id/ProfileId" />
+
+                    <TextView
+                        android:id="@+id/FollowProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/DescriptionProfile" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ReposCount"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/FollowProfile"
+                        tools:layout_editor_absoluteX="16dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
