@@ -40,9 +40,4 @@ class StarsViewModel @Inject constructor() : VortexViewModel<StartsState, Starts
         return StartsState.EmptyState()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        getRxRepository().clearRepository()
-    }
-
 }

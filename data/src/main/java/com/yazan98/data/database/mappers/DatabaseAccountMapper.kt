@@ -10,20 +10,20 @@ class DatabaseAccountMapper : DatabaseMapper<GithubUser, GithubAccount> {
         val user = GithubAccount()
         user.id = from.id
         user.avatar_url = from.avatar_url
-        user.bio = from.bio
-        user.blog = from.blog
-        user.company = from.company
-        user.created_at = from.created_at
+//        user.bio = from.bio
+//        user.blog = from.blog
+//        user.company = from.company
+//        user.created_at = from.created_at
         user.entityType = "Following"
-        user.email = from.email
-        user.followers = from.followers
-        user.following = from.following
-        user.hireable = from.hireable
-        user.location = from.location
+//        user.email = from.email
+//        user.followers = from.followers
+//        user.following = from.following
+//        user.hireable = from.hireable
+//        user.location = from.location
         user.login = from.login
-        user.name = from.name
-        user.public_gists = from.public_gists
-        user.public_repos = from.public_repos
+//        user.name = from.name
+//        user.public_gists = from.public_gists
+//        user.public_repos = from.public_repos
         return user
     }
 

@@ -20,4 +20,12 @@ class FollowingViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter
         }
     }
 
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position) {
+            0 -> "Following"
+            1 -> "Followers"
+            else -> "Following"
+        }
+    }
+
 }

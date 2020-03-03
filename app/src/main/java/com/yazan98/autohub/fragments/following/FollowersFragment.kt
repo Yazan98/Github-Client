@@ -53,7 +53,7 @@ class FollowersFragment @Inject constructor():
 
     override suspend fun onStateChanged(newState: FollowingState) {
         withContext(Dispatchers.Main) {
-            if (newState is FollowingState.FollowingUsersState) {
+            if (newState is FollowingState.FollowersUsersState) {
                 activity?.let {
                     FollowersRecycler?.apply {
                         this.linearVerticalLayout(it)
@@ -64,6 +64,11 @@ class FollowersFragment @Inject constructor():
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        FollowersRecycler?.adapter = null
     }
 
 }

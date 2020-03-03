@@ -6,6 +6,7 @@ import com.yazan98.data.models.GithubNotification
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
 import io.reactivex.Flowable
+import io.reactivex.Single
 import io.vortex.android.models.VortexServiceProviderType
 
 class HomeRepository : GithubRepository<HomeScreenApi>(), HomeScreenApi {
@@ -14,19 +15,19 @@ class HomeRepository : GithubRepository<HomeScreenApi>(), HomeScreenApi {
         return getServiceProvider(VortexServiceProviderType.BASIC).create(HomeScreenApi::class.java)
     }
 
-    override fun getNotifications(): Flowable<List<GithubNotification>> {
+    override fun getNotifications(): Single<List<GithubNotification>> {
         return getServiceProvider().getNotifications()
     }
 
-    override fun getStarredRepositories(): Flowable<List<GithubRepositoryModel>> {
+    override fun getStarredRepositories(): Single<List<GithubRepositoryModel>> {
         return getServiceProvider().getStarredRepositories()
     }
 
-    override fun getProfileInfo(): Flowable<GithubUser> {
+    override fun getProfileInfo(): Single<GithubUser> {
         return getServiceProvider().getProfileInfo()
     }
 
-    override fun getRepositories(sort: String): Flowable<List<GithubRepositoryModel>> {
+    override fun getRepositories(sort: String): Single<List<GithubRepositoryModel>> {
         return getServiceProvider().getRepositories()
     }
 

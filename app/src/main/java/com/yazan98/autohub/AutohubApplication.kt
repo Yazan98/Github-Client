@@ -52,6 +52,13 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     override fun onCreate() {
         super.onCreate()
 
+        GlobalScope.launch {
+            GithubStarter("").apply {
+                this.startSaveFollowers()
+                this.startSaveFollowings()
+            }
+        }
+
         FirebaseApp.initializeApp(this)
         VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
 

@@ -78,4 +78,8 @@ class StartsFragment @Inject constructor() : VortexFragment<StartsState, StartsA
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        StarredRecycler?.adapter = null
+    }
 }

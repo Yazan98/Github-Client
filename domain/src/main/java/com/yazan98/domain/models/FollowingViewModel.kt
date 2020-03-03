@@ -1,9 +1,11 @@
 package com.yazan98.domain.models
 
 import androidx.lifecycle.MutableLiveData
+import com.yazan98.data.database.mappers.DatabaseAccountMapper
 import com.yazan98.data.database.models.GithubAccount
 import com.yazan98.data.database.repos.DatabaseFollowersRepository
 import com.yazan98.data.database.repos.DatabaseFollowingRepository
+import com.yazan98.data.repos.ProfileRepository
 import com.yazan98.domain.actions.FollowingAction
 import com.yazan98.domain.state.FollowingState
 import io.realm.OrderedRealmCollection
@@ -30,15 +32,11 @@ class FollowingViewModel @Inject constructor(): VortexViewModel<FollowingState, 
         withContext(Dispatchers.IO) {
             when (newAction) {
                 is FollowingAction.GetFollowersUsersAction -> {
-                    if (followersObserver.value == null) {
-                        getFollowers()
-                    }
+                    getFollowers()
                 }
 
                 is FollowingAction.GetFollowingUsersAction -> {
-                    if (followingObserver.value == null) {
-                        getFollowing()
-                    }
+                    getFollowing()
                 }
             }
         }

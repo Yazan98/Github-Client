@@ -123,4 +123,9 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
     override fun getLayoutRes(): Int {
         return R.layout.fragment_profile
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        ProfileRecycler?.adapter = null
+    }
 }

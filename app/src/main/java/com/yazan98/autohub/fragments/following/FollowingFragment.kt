@@ -65,4 +65,8 @@ class FollowingFragment @Inject constructor():
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        FollowingRecycler?.adapter = null
+    }
 }

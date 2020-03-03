@@ -48,9 +48,4 @@ class NotificationsViewModel @Inject constructor() : VortexViewModel<HomeState, 
         return HomeState.EmptyState()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        getRxRepository().clearRepository()
-    }
-
 }

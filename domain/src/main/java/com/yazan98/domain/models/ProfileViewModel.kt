@@ -68,9 +68,4 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
         return ProfileState.EmptyState()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        getRxRepository().clearRepository()
-    }
-
 }

@@ -24,9 +24,12 @@ class ProfileFollowingFragment : VortexBaseFragment() {
         FollowingTabs?.apply {
             FollowViewPager?.let {
                 this.setupWithViewPager(it)
-                activity?.apply {
-                    it.adapter = FollowingViewPagerAdapter(this.supportFragmentManager)
-                }
+            }
+        }
+
+        activity?.apply {
+            FollowViewPager?.let {
+                it.adapter = FollowingViewPagerAdapter(childFragmentManager)
             }
         }
     }
