@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseApp
 import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
 import com.yazan98.data.ApplicationPrefs
+import com.yazan98.domain.models.FollowingViewModel
 import com.yazan98.domain.models.NotificationsViewModel
 import com.yazan98.domain.models.ProfileViewModel
 import com.yazan98.domain.models.StarsViewModel
@@ -103,6 +104,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
         viewModel { NotificationsViewModel() }
         viewModel { StarsViewModel() }
         viewModel { ProfileViewModel() }
+        viewModel { FollowingViewModel() }
     }
 
     private suspend fun configNotifications() {

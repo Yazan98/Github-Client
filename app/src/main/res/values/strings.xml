@@ -8,4 +8,6 @@
     <string name="view_repo">View Notification Info</string>
     <string name="profile">Profile</string>
     <string name="repositories">Repositories</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
 </resources>

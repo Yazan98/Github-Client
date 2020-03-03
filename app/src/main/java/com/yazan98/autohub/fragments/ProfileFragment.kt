@@ -1,8 +1,10 @@
 package com.yazan98.autohub.fragments
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.RepositoryAdapter
 import com.yazan98.data.models.GithubRepositoryModel
@@ -106,6 +108,14 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
 
             ReposCount?.let {
                 it.text = "Repositories : ${profile.public_repos + profile.total_private_repos}"
+            }
+
+            FollowProfile?.apply {
+                this.setOnClickListener {
+                    val data = Bundle()
+                    data.putString("Name", profile.name)
+                    findNavController().navigate(R.id.action_profileFragment_to_profileFollowingFragment, data)
+                }
             }
         }
     }

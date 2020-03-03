@@ -2,8 +2,26 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/profile_nav.xml"
     app:startDestination="@id/profileFragment">
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.yazan98.autohub.fragments.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_profileFollowingFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:destination="@id/profileFollowingFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFollowingFragment"
+        android:name="com.yazan98.autohub.fragments.following.ProfileFollowingFragment"
+        android:label="ProfileFollowingFragment" />
+
 </navigation>
