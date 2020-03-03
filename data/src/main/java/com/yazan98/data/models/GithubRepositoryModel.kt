@@ -10,7 +10,7 @@ data class GithubRepositoryModel(
     var homepage: String = "",
     var created_at: String = "",
     var updated_at: String = "",
-    var language: String = "",
+    var language: String? = "",
     var watchers_count: Long = 0,
     var has_issues: Boolean = false,
     var has_projects: Boolean = false,

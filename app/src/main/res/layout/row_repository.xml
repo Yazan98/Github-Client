@@ -6,29 +6,78 @@
     android:padding="@dimen/_10sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:id="@+id/RepositoryNameStarred"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:id="@+id/RepositoryStarredDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RepositoryNameStarred" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/_5sdp"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/StarredRepositoryLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/RepositoryStarredDescription" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <View
+                android:id="@+id/RepoLineColor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/OwnerIcon"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundedCornerRadius="@dimen/_50sdp" />
+
+            <TextView
+                android:id="@+id/RepoName"
+                android:layout_width="0dp"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/OwnerIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/RepoDes"
+                android:maxLines="2"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/OwnerIcon"
+                app:layout_constraintTop_toBottomOf="@+id/RepoName" />
+
+            <ImageView
+                android:id="@+id/RepoLanguageIcon"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_margin="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RepoDes" />
+
+            <TextView
+                android:id="@+id/LanguageRepo"
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/RepoLanguageIcon"
+                app:layout_constraintStart_toEndOf="@+id/RepoLanguageIcon"
+                app:layout_constraintTop_toTopOf="@+id/RepoLanguageIcon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

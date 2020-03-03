@@ -5,4 +5,16 @@
     <color name="colorAccent">#448AFF</color>
     <color name="white">#fff</color>
     <color name="black">#000</color>
+
+    <color name="kot_language">#f18e33</color>
+    <color name="vue">#2c3e50</color>
+    <color name="web_html">#e34c26</color>
+    <color name="js">#f1e05a</color>
+    <color name="j_lang">#b07219</color>
+    <color name="gr">#e69f56</color>
+    <color name="docker">#384d54</color>
+    <color name="shell">#89e051</color>
+    <color name="cc">#f34b7d</color>
+    <color name="ts">#2b7489</color>
+    <color name="go">#00add8</color>
 </resources>
