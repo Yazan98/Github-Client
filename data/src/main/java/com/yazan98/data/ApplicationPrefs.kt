@@ -7,13 +7,14 @@ object ApplicationPrefs {
 
     const val USERNAME = "username"
     const val TOKEN = "token"
+    const val PASSWORD = "pass"
 
     suspend fun saveUsername(username: String) {
         VortexPrefs.put(USERNAME, username)
     }
 
-    suspend fun getUsername(): String {
-        return VortexPrefs.get(USERNAME, "") as String
+    fun getUsername(): String {
+        return VortexPrefsConfig.prefs.getString(USERNAME, "").toString()
     }
 
     fun saveToken(token: String) {
@@ -22,6 +23,14 @@ object ApplicationPrefs {
 
     fun getToken(): String {
         return VortexPrefsConfig.prefs.getString(TOKEN, "").toString()
+    }
+
+    fun getPassword(): String {
+        return VortexPrefsConfig.prefs.getString(PASSWORD, "").toString()
+    }
+
+    fun savePassword(password: String) {
+        VortexPrefsConfig.prefs.edit().putString(PASSWORD, password).apply()
     }
 
 }

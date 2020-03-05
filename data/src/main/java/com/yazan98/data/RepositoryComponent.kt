@@ -37,7 +37,7 @@ interface RepositoryComponent {
                     chain.request()
                         .newBuilder()
 //                        .addHeader("Authorization", "token ${ApplicationPrefs.getToken()}")
-                        .addHeader("Authorization", Credentials.basic("Yazan98", "Yazan1998005"))
+                        .addHeader("Authorization", Credentials.basic(ApplicationPrefs.getUsername(), ApplicationPrefs.getPassword()))
                         .build()
                 chain.proceed(request)
             }

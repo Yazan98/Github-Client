@@ -10,4 +10,10 @@
     <string name="repositories">Repositories</string>
     <string name="following">Following</string>
     <string name="followers">Followers</string>
+    <string name="login">Login</string>
+    <string name="welcome_login">Welcome To Autohub Client Login With Your Username and Password From Github To Get Your Account Information</string>
+    <string name="username_hint">Username</string>
+    <string name="pass_hint">Password</string>
+    <string name="username_required">Username Required</string>
+    <string name="pass_required">Password Required</string>
 </resources>

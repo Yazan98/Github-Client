@@ -1,7 +1,9 @@
 package com.yazan98.domain.models
 
 import androidx.lifecycle.viewModelScope
+import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.ReposComponentImpl
+import com.yazan98.data.models.LoginInfo
 import com.yazan98.data.models.ProfileResponse
 import com.yazan98.data.repos.HomeRepository
 import com.yazan98.domain.actions.ProfileAction
@@ -25,6 +27,7 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
                 when (newAction) {
                     is ProfileAction.GetProfileInfoAction -> getProfileInfo()
                     is ProfileAction.GetRepositoriesAction -> getRepositories()
+                    is ProfileAction.LoginAccountInfoAction -> loginAccount(newAction.get())
                 }
             }
         }
@@ -53,6 +56,26 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
             acceptLoadingState(true)
             addRxRequest(homeRepository.getServiceProvider().getProfileInfo().subscribe({
                 profileResponse.profile = it
+            }, {
+                it.message?.let {
+                    viewModelScope.launch {
+                        acceptLoadingState(false)
+                        acceptNewState(ProfileState.ErrorResponse(it))
+                    }
+                }
+            }))
+        }
+    }
+
+    private suspend fun loginAccount(loginInfo: LoginInfo) {
+        withContext(Dispatchers.IO) {
+            ApplicationPrefs.saveUsername(loginInfo.username)
+            ApplicationPrefs.savePassword(loginInfo.password)
+            acceptLoadingState(true)
+            addRxRequest(homeRepository.getServiceProvider().getProfileInfo().subscribe({
+                viewModelScope.launch {
+                    handleStateWithLoading(ProfileState.SuccessLoginState(it))
+                }
             }, {
                 it.message?.let {
                     viewModelScope.launch {
