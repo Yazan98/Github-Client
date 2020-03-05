@@ -5,8 +5,10 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.RepositoryAdapter
+import com.yazan98.autohub.adapters.listeners.RepositoryListener
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
 import com.yazan98.domain.actions.ProfileAction
@@ -77,10 +79,19 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
             activity?.let {
                 ProfileRecycler?.apply {
                     this.linearVerticalLayout(it)
-                    this.adapter = RepositoryAdapter(response)
+                    this.adapter = RepositoryAdapter(response, repoListener)
                     (this.adapter as RepositoryAdapter).context = it
                 }
             }
+        }
+    }
+
+    private val repoListener = object: RepositoryListener {
+        override fun onRepoClicked(repo: GithubRepositoryModel) {
+            val data = Bundle()
+            data.putString("Username", repo.owner.login)
+            data.putString("RepoName", repo.name)
+            findNavController().navigate(R.id.action_profileFragment_to_repositoryFragment, data)
         }
     }
 

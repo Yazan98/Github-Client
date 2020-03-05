@@ -3,12 +3,11 @@ package com.yazan98.domain.models
 import androidx.lifecycle.viewModelScope
 import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.ReposComponentImpl
-import com.yazan98.data.models.LoginInfo
+import com.yazan98.data.models.internal.LoginInfo
 import com.yazan98.data.models.ProfileResponse
 import com.yazan98.data.repos.HomeRepository
 import com.yazan98.domain.actions.ProfileAction
 import com.yazan98.domain.state.ProfileState
-import com.yazan98.domain.state.StartsState
 import io.vortex.android.reducer.VortexViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

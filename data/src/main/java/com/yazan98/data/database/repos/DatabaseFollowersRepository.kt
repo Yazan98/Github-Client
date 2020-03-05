@@ -9,15 +9,6 @@ import kotlinx.coroutines.withContext
 
 class DatabaseFollowersRepository(private val database: Realm = Realm.getDefaultInstance()) : DatabaseCrudRepository<GithubAccount> {
 
-    fun sageEntities(list: List<GithubAccount>) {
-        database.executeTransactionAsync {  internalDatabase ->
-            list.forEach {
-                it.entityType = "Followers"
-                internalDatabase.insertOrUpdate(it)
-            }
-        }
-    }
-
     override suspend fun saveEntities(list: List<GithubAccount>) {
         withContext(Dispatchers.Main) {
             database.executeTransactionAsync {  internalDatabase ->

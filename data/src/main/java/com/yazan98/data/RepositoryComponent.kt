@@ -1,8 +1,6 @@
 package com.yazan98.data
 
 
-import io.vortex.android.prefs.VortexPrefsConfig
-import io.vortex.android.prefs.VortexPrefsConsts
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

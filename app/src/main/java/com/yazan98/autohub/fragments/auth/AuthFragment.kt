@@ -9,12 +9,11 @@ import com.google.android.material.textfield.TextInputLayout
 import com.yazan98.autohub.R
 import com.yazan98.autohub.utils.InputType
 import com.yazan98.data.models.GithubUser
-import com.yazan98.data.models.LoginInfo
+import com.yazan98.data.models.internal.LoginInfo
 import com.yazan98.domain.actions.ProfileAction
 import com.yazan98.domain.models.ProfileViewModel
 import com.yazan98.domain.state.ProfileState
 import io.vortex.android.ui.VortexErrorType
-import io.vortex.android.ui.fragment.VortexBaseFragment
 import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.ui.goneView
 import io.vortex.android.utils.ui.showView

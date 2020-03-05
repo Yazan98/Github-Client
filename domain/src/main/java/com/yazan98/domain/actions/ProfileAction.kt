@@ -1,6 +1,6 @@
 package com.yazan98.domain.actions
 
-import com.yazan98.data.models.LoginInfo
+import com.yazan98.data.models.internal.LoginInfo
 import io.vortex.android.VortexAction
 
 interface ProfileAction: VortexAction {

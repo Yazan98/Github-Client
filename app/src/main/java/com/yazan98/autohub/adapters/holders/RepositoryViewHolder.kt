@@ -16,4 +16,5 @@ class RepositoryViewHolder @Inject constructor(view: View): RecyclerView.ViewHol
     val iconLanguage: ImageView? = view.RepoLanguageIcon
     val language: TextView? = view.LanguageRepo
     val license: TextView? = view.licenseRepo
+    val row: View? = view.RepoItem
 }

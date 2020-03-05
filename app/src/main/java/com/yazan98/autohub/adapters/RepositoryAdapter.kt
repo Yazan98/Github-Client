@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.view.View
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.holders.RepositoryViewHolder
+import com.yazan98.autohub.adapters.listeners.RepositoryListener
 import com.yazan98.autohub.utils.LanguageColorUtils
 import com.yazan98.data.models.GithubRepositoryModel
 import io.vortex.android.utils.random.VortexBaseAdapter
@@ -14,7 +15,10 @@ import io.vortex.android.utils.random.VortexImageLoaders
 import javax.inject.Inject
 
 
-class RepositoryAdapter @Inject constructor(private val data: List<GithubRepositoryModel>): VortexBaseAdapter<RepositoryViewHolder>() {
+class RepositoryAdapter @Inject constructor(
+    private val data: List<GithubRepositoryModel>,
+    private var listener: RepositoryListener? = null
+): VortexBaseAdapter<RepositoryViewHolder>() {
 
     override fun getItemCount(): Int {
         return data.size
@@ -61,6 +65,12 @@ class RepositoryAdapter @Inject constructor(private val data: List<GithubReposit
         data[position].license?.let { result ->
             holder.license?.let {
                 it.text = "License: ${result.name}"
+            }
+        }
+
+        holder.row?.apply {
+            this.setOnClickListener {
+                listener?.onRepoClicked(data[position])
             }
         }
 
