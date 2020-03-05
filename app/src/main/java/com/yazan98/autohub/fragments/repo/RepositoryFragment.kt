@@ -2,6 +2,7 @@ package com.yazan98.autohub.fragments.repo
 
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.yazan98.autohub.R
 import com.yazan98.data.models.GithubRepositoryModel
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_repository.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class RepositoryFragment : VortexFragment<RepositoryState, RepositoryAction, RepositoryViewModel>() {
 
@@ -24,11 +26,20 @@ class RepositoryFragment : VortexFragment<RepositoryState, RepositoryAction, Rep
     }
 
     override fun initScreen(view: View) {
+        viewModel.readmeFile.observe(this, Observer { result ->
+            Timber.d("The Url : ${result}")
+            RepositoryReadmeFile?.let {
+                Timber.d("The Url : ${it}")
+                it.loadUrl(result)
+            }
+        })
+
         lifecycleScope.launch {
             arguments?.let { args ->
                 args.getString("Username")?.also {
                     args.getString("RepoName")?.also { repoName ->
                         getController().execute(RepositoryAction.GetRepoInfo(RepoInfo(it, repoName)))
+                        getController().execute(RepositoryAction.GetRepositoryReadme(RepoInfo(it, repoName)))
                     }
                 }
             }
@@ -63,6 +74,8 @@ class RepositoryFragment : VortexFragment<RepositoryState, RepositoryAction, Rep
             RepoNameField?.apply { this.text = repo.name }
             RepoName?.apply { this.text = repo.full_name }
             RepoBio?.apply { this.text = repo.description }
+            StarsNumber?.apply { this.text = "${repo.watchers_count} ${getString(R.string.stars)}" }
+            ForksNumber?.apply { this.text = "${repo.forks} ${getString(R.string.forks)}" }
         }
     }
 

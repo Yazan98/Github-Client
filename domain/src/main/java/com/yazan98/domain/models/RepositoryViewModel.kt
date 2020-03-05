@@ -1,5 +1,6 @@
 package com.yazan98.domain.models
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yazan98.data.ReposComponentImpl
 import com.yazan98.data.models.internal.RepoInfo
@@ -14,6 +15,7 @@ import javax.inject.Inject
 
 class RepositoryViewModel @Inject constructor(): VortexViewModel<RepositoryState, RepositoryAction>() {
 
+    val readmeFile: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     private val repo: RepoRepository by lazy {
         ReposComponentImpl().getRepositoryComponent()
     }
@@ -22,7 +24,24 @@ class RepositoryViewModel @Inject constructor(): VortexViewModel<RepositoryState
         withContext(Dispatchers.IO) {
             when (newAction) {
                 is RepositoryAction.GetRepoInfo -> getRepoInfo(newAction.get())
+                is RepositoryAction.GetRepositoryReadme -> getRepoReadmeFile(newAction.get())
             }
+        }
+    }
+
+    private suspend fun getRepoReadmeFile(repoInfo: RepoInfo) {
+        withContext(Dispatchers.IO) {
+            addRxRequest(repo.getRepositoryReadmeFile(repoInfo.username, repoInfo.repoName).subscribe({
+                println("The Url : ViewModel : ${it.html_url}")
+                readmeFile.postValue(it.html_url)
+            }, {
+                it.message?.let {
+                    viewModelScope.launch {
+                        acceptNewState(RepositoryState.ErrorState(it))
+                        acceptLoadingState(false)
+                    }
+                }
+            }))
         }
     }
 
