@@ -1,15 +1,19 @@
 package com.yazan98.autohub.fragments.auth
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.yazan98.autohub.R
 import com.yazan98.autohub.utils.InputType
+import com.yazan98.data.models.GithubUser
 import com.yazan98.data.models.LoginInfo
 import com.yazan98.domain.actions.ProfileAction
 import com.yazan98.domain.models.ProfileViewModel
 import com.yazan98.domain.state.ProfileState
+import io.vortex.android.ui.VortexErrorType
 import io.vortex.android.ui.fragment.VortexBaseFragment
 import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.ui.goneView
@@ -74,8 +78,19 @@ class AuthFragment : VortexFragment<ProfileState, ProfileAction, ProfileViewMode
     override suspend fun onStateChanged(newState: ProfileState) {
         withContext(Dispatchers.IO) {
             when (newState) {
-
+                is ProfileState.ErrorResponse -> showError(newState.get(), VortexErrorType.SHORT_TOAST)
+                is ProfileState.SuccessLoginState -> successLogin(newState.get())
             }
+        }
+    }
+
+    private suspend fun successLogin(user: GithubUser) {
+        withContext(Dispatchers.Main) {
+            val data = Bundle()
+            data.putString("Image", user.avatar_url)
+            data.putString("Username", user.name)
+            data.putString("Bio", user.bio)
+            findNavController().navigate(R.id.action_authFragment_to_loginProfileViewerFragment, data)
         }
     }
 

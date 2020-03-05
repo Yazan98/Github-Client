@@ -16,4 +16,6 @@
     <string name="pass_hint">Password</string>
     <string name="username_required">Username Required</string>
     <string name="pass_required">Password Required</string>
+    <string name="enter_app">Continue</string>
+    <string name="welcome_to_autohub_github_client_if_everything_right_click_continue_to_start_using_the_application_features">Welcome To Autohub (Github Client) if Everything Right Click Continue To Start using The Application Features</string>
 </resources>

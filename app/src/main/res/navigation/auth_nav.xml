@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.yazan98.autohub.fragments.OnBoardingFragment"
+        android:name="com.yazan98.autohub.fragments.auth.OnBoardingFragment"
         android:label="OnBoardingFragment" >
         <action
             android:id="@+id/action_onBoardingFragment_to_authFragment"
@@ -14,5 +14,13 @@
     <fragment
         android:id="@+id/authFragment"
         android:name="com.yazan98.autohub.fragments.auth.AuthFragment"
-        android:label="AuthFragment" />
+        android:label="AuthFragment" >
+        <action
+            android:id="@+id/action_authFragment_to_loginProfileViewerFragment"
+            app:destination="@id/loginProfileViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginProfileViewerFragment"
+        android:name="com.yazan98.autohub.fragments.auth.LoginProfileViewerFragment"
+        android:label="LoginProfileViewerFragment" />
 </navigation>

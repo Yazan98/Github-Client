@@ -1,6 +1,5 @@
-package com.yazan98.autohub.fragments
+package com.yazan98.autohub.fragments.auth
 
-import android.content.Intent
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
