@@ -42,11 +42,13 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
             when (newState) {
                 true -> {
                     ProfileContainer?.goneView()
+
                     ProfileProgress?.showView()
                 }
 
                 false -> {
                     ProfileContainer?.showView()
+
                     ProfileProgress?.goneView()
                 }
             }
