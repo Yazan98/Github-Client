@@ -8,4 +8,16 @@
     <string name="view_repo">View Notification Info</string>
     <string name="profile">Profile</string>
     <string name="repositories">Repositories</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="login">Login</string>
+    <string name="welcome_login">Welcome To Autohub Client Login With Your Username and Password From Github To Get Your Account Information</string>
+    <string name="username_hint">Username</string>
+    <string name="pass_hint">Password</string>
+    <string name="username_required">Username Required</string>
+    <string name="pass_required">Password Required</string>
+    <string name="enter_app">Continue</string>
+    <string name="welcome_to_autohub_github_client_if_everything_right_click_continue_to_start_using_the_application_features">Welcome To Autohub (Github Client) if Everything Right Click Continue To Start using The Application Features</string>
+    <string name="stars">Stars</string>
+    <string name="forks">Forks</string>
 </resources>

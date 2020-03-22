@@ -1,8 +1,6 @@
 package com.yazan98.data
 
 
-import io.vortex.android.prefs.VortexPrefsConfig
-import io.vortex.android.prefs.VortexPrefsConsts
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,7 +35,7 @@ interface RepositoryComponent {
                     chain.request()
                         .newBuilder()
 //                        .addHeader("Authorization", "token ${ApplicationPrefs.getToken()}")
-                        .addHeader("Authorization", Credentials.basic("Yazan98", "Yazan1998005"))
+                        .addHeader("Authorization", Credentials.basic(ApplicationPrefs.getUsername(), ApplicationPrefs.getPassword()))
                         .build()
                 chain.proceed(request)
             }

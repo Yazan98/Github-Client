@@ -152,6 +152,7 @@ dependencies { configuration ->
     implementation project(":data")
     implementation project(":domain")
 
+    implementation 'io.realm:android-adapters:3.1.0'
     // add to Libraries.gradle
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'

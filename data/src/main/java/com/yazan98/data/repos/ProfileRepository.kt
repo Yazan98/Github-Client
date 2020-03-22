@@ -5,6 +5,8 @@ import com.yazan98.data.api.ProfileApi
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
 import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.Single
 import io.vortex.android.models.VortexServiceProviderType
 
 class ProfileRepository : GithubRepository<ProfileApi>() , ProfileApi {
@@ -21,24 +23,27 @@ class ProfileRepository : GithubRepository<ProfileApi>() , ProfileApi {
         return serviceProvider.create(ProfileApi::class.java)
     }
 
-    override fun getProfileInfoByUsername(username: String): Flowable<GithubUser> {
+    override fun getProfileInfoByUsername(username: String): Single<GithubUser> {
         return service.getProfileInfoByUsername(username)
     }
 
-    override fun getProfileInfoByToken(): Flowable<GithubUser> {
+    override fun getProfileInfoByToken(): Single<GithubUser> {
         return service.getProfileInfoByToken()
     }
 
-    override fun getFollowersByToken(username: String): Flowable<List<GithubUser>> {
+    override fun getFollowersByToken(username: String): Single<List<GithubUser>> {
         return service.getFollowersByToken(username)
     }
 
-    override fun getFollowingByToken(): Flowable<List<GithubUser>> {
-        return service.getFollowingByToken()
+    override fun getFollowersByToken(): Single<List<GithubUser>> {
+        return service.getFollowersByToken()
     }
 
-    override fun getReposByToken(username: String): Flowable<List<GithubRepositoryModel>> {
+    override fun getReposByToken(username: String): Single<List<GithubRepositoryModel>> {
         return service.getReposByToken(username)
     }
 
+    override fun getFollowingByToken(): Single<List<GithubUser>> {
+        return service.getFollowingByToken()
+    }
 }

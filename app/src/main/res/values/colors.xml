@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#448AFF</color>
-    <color name="colorPrimaryDark">#448AFF</color>
-    <color name="colorAccent">#448AFF</color>
+
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#212121</color>
     <color name="white">#fff</color>
     <color name="black">#000</color>
 
@@ -17,4 +18,5 @@
     <color name="cc">#f34b7d</color>
     <color name="ts">#2b7489</color>
     <color name="go">#00add8</color>
+
 </resources>

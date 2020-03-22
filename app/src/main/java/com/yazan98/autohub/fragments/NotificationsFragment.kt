@@ -98,4 +98,9 @@ class NotificationsFragment : VortexFragment<HomeState, HomeAction, Notification
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        MainRecycler?.adapter = null
+    }
+
 }

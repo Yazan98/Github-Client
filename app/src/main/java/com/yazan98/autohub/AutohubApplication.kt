@@ -5,9 +5,7 @@ import com.google.firebase.FirebaseApp
 import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
 import com.yazan98.data.ApplicationPrefs
-import com.yazan98.domain.models.NotificationsViewModel
-import com.yazan98.domain.models.ProfileViewModel
-import com.yazan98.domain.models.StarsViewModel
+import com.yazan98.domain.models.*
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.vortex.android.keys.ImageLoader
@@ -50,6 +48,13 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
 
     override fun onCreate() {
         super.onCreate()
+
+        GlobalScope.launch {
+            GithubStarter("").apply {
+                this.startSaveFollowers()
+                this.startSaveFollowings()
+            }
+        }
 
         FirebaseApp.initializeApp(this)
         VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
@@ -103,6 +108,8 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
         viewModel { NotificationsViewModel() }
         viewModel { StarsViewModel() }
         viewModel { ProfileViewModel() }
+        viewModel { FollowingViewModel() }
+        viewModel { RepositoryViewModel() }
     }
 
     private suspend fun configNotifications() {

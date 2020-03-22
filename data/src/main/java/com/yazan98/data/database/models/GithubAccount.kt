@@ -28,4 +28,12 @@ open class GithubAccount : RealmObject() {
     var updated_at: String = ""
     var entityType: String = ""
 
+    override fun toString(): String {
+        return """
+            Github Account : {
+                Name : $name
+            }
+        """.trimIndent()
+    }
+
 }
