@@ -95,19 +95,18 @@
 
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/LoginAccountButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
+        android:background="@drawable/bg_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:layout_margin="@dimen/_30sdp"
-        app:cornerRadius="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/colorPrimary" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:layout_width="wrap_content"

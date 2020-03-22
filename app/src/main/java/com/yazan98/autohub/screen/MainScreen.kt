@@ -17,13 +17,6 @@ class MainScreen : VortexScreen() {
             this.adapter = HomeViewPagerAdapter(supportFragmentManager)
         }
 
-        MainFloatingButton?.apply {
-            this.setOnClickListener {
-                lifecycleScope.launch {
-                    startScreen<ProfileScreen>(false)
-                }
-            }
-        }
     }
 
     override fun getLayoutRes(): Int {

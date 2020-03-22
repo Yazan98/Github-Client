@@ -1,6 +1,10 @@
 package com.yazan98.autohub
 
 import android.content.Context
+import com.facebook.drawee.backends.pipeline.Fresco
+import com.facebook.imagepipeline.core.ImagePipelineConfig
+import com.facebook.imagepipeline.core.ImageTranscoderType
+import com.facebook.imagepipeline.core.MemoryChunkType
 import com.google.firebase.FirebaseApp
 import com.yazan98.autohub.starter.GithubStarter
 import com.yazan98.autohub.utils.LeakUploader
@@ -67,7 +71,6 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 .registerApplicationState(true)
                 .registerApplicationLogger(LoggerType.TIMBER)
                 .registerCompatVector()
-                .registerImageLoader(ImageLoader.FRESCO)
                 .registerStrictMode()
                 .registerExceptionHandler(this@AutohubApplication)
                 .registerVortexPermissionsSettings()
@@ -87,6 +90,14 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
 
             startGithubActions()
         }
+
+        Fresco.initialize(
+            applicationContext,
+            ImagePipelineConfig.newBuilder(applicationContext)
+                .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
+                .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER)
+                .experiment().setNativeCodeDisabled(true)
+                .build())
 
         startKoin {
             androidLogger(Level.DEBUG)

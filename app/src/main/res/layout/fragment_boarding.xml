@@ -49,20 +49,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GithubLogo" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/_30sdp"
         android:id="@+id/LoginButton"
-        app:cornerRadius="@dimen/_5sdp"
-        android:textColor="@color/white"
+        android:background="@drawable/bg_button_strock"
+        android:textColor="@color/colorPrimary"
         android:textAllCaps="false"
         android:text="@string/continue_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/LoginAuthButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,10 +70,9 @@
         android:layout_marginEnd="@dimen/_30sdp"
         android:layout_marginBottom="10dp"
         android:text="@string/login"
+        android:background="@drawable/bg_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:strokeColor="@color/colorPrimary"
-        app:cornerRadius="@dimen/_5sdp"
         app:layout_constraintBottom_toTopOf="@+id/LoginButton"
         tools:layout_editor_absoluteX="39dp" />
 

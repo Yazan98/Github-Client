@@ -152,10 +152,11 @@ dependencies { configuration ->
     implementation project(":data")
     implementation project(":domain")
 
+    implementation 'com.android.support:support-core-utils:28.0.0'
     implementation 'io.realm:android-adapters:3.1.0'
     // add to Libraries.gradle
-    implementation 'com.google.firebase:firebase-messaging:20.1.0'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-messaging:20.1.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
     implementation("com.google.android.material:material:1.2.0-alpha05")
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
     implementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.1'
