@@ -1,9 +1,6 @@
 package com.yazan98.data.api
 
-import com.yazan98.data.models.FeedResponse
-import com.yazan98.data.models.GithubNotification
-import com.yazan98.data.models.GithubRepositoryModel
-import com.yazan98.data.models.GithubUser
+import com.yazan98.data.models.*
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -26,5 +23,8 @@ interface HomeScreenApi {
 
     @GET("users/{username}/received_events?type=all")
     fun getFeedsList(@Path("username") username: String): Single<List<FeedResponse>>
+
+    @GET("user/orgs")
+    fun getOrgs(): Single<List<GithubOrg>>
 
 }

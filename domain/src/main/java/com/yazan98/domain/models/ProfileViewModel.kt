@@ -26,6 +26,7 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
                 when (newAction) {
                     is ProfileAction.GetProfileInfoAction -> getProfileInfo()
                     is ProfileAction.GetRepositoriesAction -> getRepositories()
+                    is ProfileAction.GetOrganizationsAction -> getOrgs()
                     is ProfileAction.LoginAccountInfoAction -> loginAccount(newAction.get())
                 }
             }
@@ -37,7 +38,6 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
             addRxRequest(homeRepository.getServiceProvider().getRepositories().subscribe({
                 viewModelScope.launch {
                     profileResponse.repositories = it
-                    handleStateWithLoading(ProfileState.SuccessState(profileResponse))
                 }
             }, {
                 it.message?.let {
@@ -72,8 +72,24 @@ class ProfileViewModel: VortexViewModel<ProfileState, ProfileAction>() {
             ApplicationPrefs.savePassword(loginInfo.password)
             acceptLoadingState(true)
             addRxRequest(homeRepository.getServiceProvider().getProfileInfo().subscribe({
+               profileResponse.profile = it
+            }, {
+                it.message?.let {
+                    viewModelScope.launch {
+                        acceptLoadingState(false)
+                        acceptNewState(ProfileState.ErrorResponse(it))
+                    }
+                }
+            }))
+        }
+    }
+
+    private suspend fun getOrgs() {
+        withContext(Dispatchers.IO) {
+            addRxRequest(homeRepository.getOrgs().subscribe({
                 viewModelScope.launch {
-                    handleStateWithLoading(ProfileState.SuccessLoginState(it))
+                    profileResponse.organizations = it
+                    handleStateWithLoading(ProfileState.SuccessState(profileResponse))
                 }
             }, {
                 it.message?.let {

@@ -7,8 +7,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.yazan98.autohub.R
+import com.yazan98.autohub.adapters.OrgsAdapter
 import com.yazan98.autohub.adapters.RepositoryAdapter
 import com.yazan98.autohub.adapters.listeners.RepositoryListener
+import com.yazan98.data.models.GithubOrg
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
 import com.yazan98.domain.actions.ProfileAction
@@ -18,6 +20,7 @@ import io.vortex.android.ui.VortexErrorType
 import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.random.VortexImageLoaders
 import io.vortex.android.utils.ui.goneView
+import io.vortex.android.utils.ui.linearHorizontalLayout
 import io.vortex.android.utils.ui.linearVerticalLayout
 import io.vortex.android.utils.ui.showView
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -37,6 +40,7 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
         lifecycleScope.launch {
             getController().execute(ProfileAction.GetProfileInfoAction())
             getController().execute(ProfileAction.GetRepositoriesAction())
+            getController().execute(ProfileAction.GetOrganizationsAction())
         }
     }
 
@@ -64,10 +68,32 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
                     newState.get().let {
                         it.profile?.let { showProfileInfo(it) }
                         it.repositories?.let { showRepositories(it) }
+                        it.organizations?.let { showOrgs(it) }
                     }
                 }
                 else -> {
 
+                }
+            }
+        }
+    }
+
+    private suspend fun showOrgs(orgs: List<GithubOrg>) {
+        withContext(Dispatchers.Main) {
+            when (orgs.isNotEmpty()) {
+                true -> {
+                    activity?.let {
+                        OrgsRecycler?.apply {
+                            this.linearHorizontalLayout(it)
+                            this.adapter = OrgsAdapter(orgs)
+                            (this.adapter as OrgsAdapter).context = it
+                        }
+                    }
+                }
+
+                false -> {
+                    OrgsRecycler?.goneView()
+                    OrgsText?.goneView()
                 }
             }
         }

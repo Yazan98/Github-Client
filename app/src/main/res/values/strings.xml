@@ -24,4 +24,5 @@
     <string name="type">Type</string>
     <string name="repo_name">"Repository : "</string>
     <string name="pick_method">Pick Method</string>
+    <string name="orgs">Organizations</string>
 </resources>
