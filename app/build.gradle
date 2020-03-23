@@ -25,6 +25,7 @@ android {
         resConfigs "en", "ar"
         buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
         buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
+        buildConfigField "String", "TRENDING_BASE_URL", "\"${TrendingApiUrl}\""
         testInstrumentationRunnerArgument "${rootProject.ext.AndroidRunnerArgument}", "${rootProject.ext.LeakCanaryListener}"
         javaCompileOptions {
             annotationProcessorOptions {

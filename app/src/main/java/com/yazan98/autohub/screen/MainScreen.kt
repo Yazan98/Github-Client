@@ -27,7 +27,10 @@ class MainScreen : VortexScreen() {
             this.supportActionBar?.title = ""
             it.setNavigationIcon(R.drawable.ic_menu)
             it.setNavigationOnClickListener {
-                dialog.show(supportFragmentManager, "")
+                lifecycleScope.launch {
+                    startScreen<TrendingScreen>(false)
+                }
+//                dialog.show(supportFragmentManager, "")
             }
         }
 

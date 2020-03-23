@@ -94,6 +94,7 @@ subprojects {
                 versionCode rootProject.ext.VersionCode
                 versionName "${rootProject.ext.ApplicationVersion}"
                 buildConfigField "String", "BASE_URL", "\"${ApiUrl}\""
+                buildConfigField "String", "TRENDING_BASE_URL", "\"${TrendingApiUrl}\""
                 testInstrumentationRunner "${rootProject.ext.AndroidTest}"
                 resConfigs "en", "ar"
             }

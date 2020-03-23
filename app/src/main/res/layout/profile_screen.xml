@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:navGraph="@navigation/profile_nav" />
+        app:navGraph="@navigation/trending_nav" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

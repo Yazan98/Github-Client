@@ -25,4 +25,5 @@
     <string name="repo_name">"Repository : "</string>
     <string name="pick_method">Pick Method</string>
     <string name="orgs">Organizations</string>
+    <string name="trending">Trending Repositories</string>
 </resources>
