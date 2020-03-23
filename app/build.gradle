@@ -167,6 +167,7 @@ dependencies { configuration ->
     implementation "androidx.work:work-gcm:2.3.2"
     androidTestImplementation "androidx.work:work-testing:2.3.2"
     implementation 'androidx.fragment:fragment-ktx:1.2.2'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
 }
 

@@ -4,8 +4,11 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItems
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.FeedsAdapter
+import com.yazan98.autohub.adapters.listeners.FeedsListener
 import com.yazan98.data.models.FeedResponse
 import com.yazan98.domain.actions.FeedsAction
 import com.yazan98.domain.models.FeedsViewModel
@@ -24,6 +27,8 @@ import javax.inject.Inject
 class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsAction, FeedsViewModel>() {
 
     private val viewModel: FeedsViewModel by viewModels()
+    private val pickerItems: List<String> by lazy { arrayListOf("View Profile", "View Repository") }
+
     override suspend fun getController(): FeedsViewModel = viewModel
     override fun getLayoutRes(): Int {
         return R.layout.fragment_feeds
@@ -65,11 +70,34 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
             activity?.let {
                 FeedsList?.apply {
                     this.linearVerticalLayout(it)
-                    this.adapter = FeedsAdapter(feeds)
+                    this.adapter = FeedsAdapter(feeds, itemListener)
                     (this.adapter as FeedsAdapter).context = it
                     this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
             }
         }
     }
+
+    private val itemListener = object : FeedsListener {
+        override fun onFeedClicked(item: FeedResponse) {
+            activity?.let {
+                MaterialDialog(it).show {
+                    title(R.string.pick_method)
+                    listItems(items = pickerItems) { dialog, index, text ->
+                        dialog.dismiss()
+                        when (index) {
+                            0 -> {
+
+                            }
+
+                            1 -> {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

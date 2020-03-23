@@ -12,4 +12,5 @@ class FeedsViewHolder @Inject constructor(view: View): RecyclerView.ViewHolder(v
     val title: TextView? = view.FeedTitle
     val repoName: TextView? = view.RepoNameFeed
     val action: TextView? = view.FeedAction
+    val item: View? = view.FeedItem
 }

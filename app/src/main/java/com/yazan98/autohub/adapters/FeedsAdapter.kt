@@ -3,12 +3,16 @@ package com.yazan98.autohub.adapters
 import android.view.View
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.holders.FeedsViewHolder
+import com.yazan98.autohub.adapters.listeners.FeedsListener
 import com.yazan98.data.models.FeedResponse
 import io.vortex.android.utils.random.VortexBaseAdapter
 import io.vortex.android.utils.random.VortexImageLoaders
 import javax.inject.Inject
 
-class FeedsAdapter @Inject constructor(private val response: List<FeedResponse>): VortexBaseAdapter<FeedsViewHolder>() {
+class FeedsAdapter @Inject constructor(
+    private val response: List<FeedResponse>,
+    private var listener: FeedsListener? = null
+): VortexBaseAdapter<FeedsViewHolder>() {
 
     override fun getItemCount(): Int {
         return response.size
@@ -37,6 +41,10 @@ class FeedsAdapter @Inject constructor(private val response: List<FeedResponse>)
 
         holder.repoName?.let {
             it.text = "${context.getString(R.string.repo_name)} ${response[position].repo.name}"
+        }
+
+        holder.item?.setOnClickListener {
+            listener?.onFeedClicked(response[position])
         }
     }
 }

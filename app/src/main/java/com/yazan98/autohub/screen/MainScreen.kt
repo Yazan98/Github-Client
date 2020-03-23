@@ -17,6 +17,12 @@ class MainScreen : VortexScreen() {
             this.adapter = HomeViewPagerAdapter(supportFragmentManager)
         }
 
+        ToolbarMain?.let {
+            this.setSupportActionBar(it)
+            this.supportActionBar?.title = ""
+            it.setNavigationIcon(R.drawable.ic_menu)
+        }
+
         MottomNavBar?.apply {
             this.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
