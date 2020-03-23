@@ -20,4 +20,7 @@
     <string name="welcome_to_autohub_github_client_if_everything_right_click_continue_to_start_using_the_application_features">Welcome To Autohub (Github Client) if Everything Right Click Continue To Start using The Application Features</string>
     <string name="stars">Stars</string>
     <string name="forks">Forks</string>
+    <string name="action">"Action : "</string>
+    <string name="type">Type</string>
+    <string name="repo_name">"Repository : "</string>
 </resources>

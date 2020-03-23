@@ -2,6 +2,7 @@ package com.yazan98.data.repos
 
 import com.yazan98.data.GithubRepository
 import com.yazan98.data.api.HomeScreenApi
+import com.yazan98.data.models.FeedResponse
 import com.yazan98.data.models.GithubNotification
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
@@ -29,6 +30,10 @@ class HomeRepository : GithubRepository<HomeScreenApi>(), HomeScreenApi {
 
     override fun getRepositories(sort: String): Single<List<GithubRepositoryModel>> {
         return getServiceProvider().getRepositories()
+    }
+
+    override fun getFeedsList(username: String): Single<List<FeedResponse>> {
+        return getServiceProvider().getFeedsList(username)
     }
 
 }

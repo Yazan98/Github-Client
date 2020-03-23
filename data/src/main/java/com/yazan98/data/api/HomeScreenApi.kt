@@ -1,11 +1,13 @@
 package com.yazan98.data.api
 
+import com.yazan98.data.models.FeedResponse
 import com.yazan98.data.models.GithubNotification
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
 import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface HomeScreenApi {
@@ -21,5 +23,8 @@ interface HomeScreenApi {
 
     @GET("user/repos?type=all")
     fun getRepositories(@Query("sort") sort: String = "updated"): Single<List<GithubRepositoryModel>>
+
+    @GET("users/{username}/received_events?type=all")
+    fun getFeedsList(@Path("username") username: String): Single<List<FeedResponse>>
 
 }

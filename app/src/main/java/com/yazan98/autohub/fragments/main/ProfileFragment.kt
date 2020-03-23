@@ -1,4 +1,4 @@
-package com.yazan98.autohub.fragments
+package com.yazan98.autohub.fragments.main
 
 import android.os.Bundle
 import android.view.View
@@ -21,7 +21,6 @@ import io.vortex.android.utils.ui.goneView
 import io.vortex.android.utils.ui.linearVerticalLayout
 import io.vortex.android.utils.ui.showView
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_starred_repos.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -46,13 +45,11 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
             when (newState) {
                 true -> {
                     ProfileContainer?.goneView()
-
                     ProfileProgress?.showView()
                 }
 
                 false -> {
                     ProfileContainer?.showView()
-
                     ProfileProgress?.goneView()
                 }
             }

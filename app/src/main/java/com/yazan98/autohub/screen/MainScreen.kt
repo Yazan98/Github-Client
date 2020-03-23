@@ -17,6 +17,16 @@ class MainScreen : VortexScreen() {
             this.adapter = HomeViewPagerAdapter(supportFragmentManager)
         }
 
+        MottomNavBar?.apply {
+            this.setOnNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.HomeItem -> viewpager?.currentItem = 0
+                    R.id.NotificationsButton -> viewpager?.currentItem = 1
+                    R.id.ProfileButton -> viewpager?.currentItem = 2
+                }
+                true
+            }
+        }
     }
 
     override fun getLayoutRes(): Int {
