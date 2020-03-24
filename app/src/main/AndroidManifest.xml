@@ -33,6 +33,7 @@
         <activity android:name=".screen.RegisterScreen" />
         <activity android:name=".screen.GithubAuthScreen" />
         <activity android:name=".screen.TrendingScreen" />
+        <activity android:name=".screen.StarsScreen" />
 
     </application>
 

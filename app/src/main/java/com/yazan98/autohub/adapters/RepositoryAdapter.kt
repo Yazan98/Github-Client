@@ -34,11 +34,11 @@ class RepositoryAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.name?.let {
-            it.text = data[position].name
+            it.text = data[position].full_name
         }
 
         holder.fullName?.let {
-            it.text = data[position].full_name
+            it.text = data[position].name
         }
 
         holder.username?.let {

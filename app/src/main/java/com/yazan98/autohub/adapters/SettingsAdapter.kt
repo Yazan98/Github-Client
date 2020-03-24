@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.holders.OptionViewHolder
+import com.yazan98.autohub.screen.StarsScreen
 import com.yazan98.autohub.screen.TrendingScreen
 import com.yazan98.autohub.utils.ApplicationUtils
 import com.yazan98.data.models.internal.Option
@@ -37,6 +38,7 @@ class SettingsAdapter constructor(
         holder.item?.apply {
             this.setOnClickListener {
                 when (position) {
+                    0 -> context.startActivity(Intent(context, StarsScreen::class.java))
                     1 -> context.startActivity(Intent(context, TrendingScreen::class.java))
                 }
             }
