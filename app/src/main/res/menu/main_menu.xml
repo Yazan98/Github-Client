@@ -15,9 +15,9 @@
         android:title="@string/notifi"/>
 
     <item
-        android:id="@+id/Searchbutton"
-        android:icon="@drawable/search"
+        android:id="@+id/ProfileButton"
+        android:icon="@drawable/account"
         app:showAsAction="ifRoom"
-        android:title="@string/search"/>
+        android:title="@string/profile"/>
 
 </menu>

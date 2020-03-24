@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.yazan98.autohub.fragments.NotificationsFragment"
+        android:name="com.yazan98.autohub.fragments.main.NotificationsFragment"
         android:label="MainFragment" />
 </navigation>

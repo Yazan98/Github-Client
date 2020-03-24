@@ -1,4 +1,4 @@
-package com.yazan98.autohub.fragments
+package com.yazan98.autohub.fragments.main
 
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -44,7 +44,7 @@ class NotificationsFragment : VortexFragment<HomeState, HomeAction, Notification
         (activity?.application as AutohubApplication).let {
             lifecycleScope.launch {
                 getController().execute(HomeAction.GetNotificationsAction())
-                it.startGithubActions()
+//                it.startGithubActions()
             }
         }
     }

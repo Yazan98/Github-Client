@@ -25,6 +25,7 @@ android {
         resConfigs "en", "ar"
         buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
         buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
+        buildConfigField "String", "TRENDING_BASE_URL", "\"${TrendingApiUrl}\""
         testInstrumentationRunnerArgument "${rootProject.ext.AndroidRunnerArgument}", "${rootProject.ext.LeakCanaryListener}"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -167,6 +168,7 @@ dependencies { configuration ->
     implementation "androidx.work:work-gcm:2.3.2"
     androidTestImplementation "androidx.work:work-testing:2.3.2"
     implementation 'androidx.fragment:fragment-ktx:1.2.2'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
 }
 

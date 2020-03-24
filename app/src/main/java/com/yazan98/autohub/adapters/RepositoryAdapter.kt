@@ -56,11 +56,11 @@ class RepositoryAdapter @Inject constructor(
             }
         }
 
-        data[position].language?.apply {
-            holder.lineColor?.let {
-                it.setBackgroundResource(LanguageColorUtils.getColorByLanguage(this))
-            }
-        }
+//        data[position].language?.apply {
+//            holder.lineColor?.let {
+//                it.setBackgroundResource(LanguageColorUtils.getColorByLanguage(this))
+//            }
+//        }
 
         data[position].license?.let { result ->
             holder.license?.let {

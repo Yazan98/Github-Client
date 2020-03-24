@@ -88,7 +88,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 handleDatabaseError(ex.message)
             }
 
-            startGithubActions()
+//            startGithubActions()
         }
 
         Fresco.initialize(
@@ -121,6 +121,8 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
         viewModel { ProfileViewModel() }
         viewModel { FollowingViewModel() }
         viewModel { RepositoryViewModel() }
+        viewModel { FeedsViewModel() }
+        viewModel { TrendingRepositoryViewModel() }
     }
 
     private suspend fun configNotifications() {

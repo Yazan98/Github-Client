@@ -5,8 +5,9 @@ import io.vortex.android.VortexAction
 
 interface ProfileAction: VortexAction {
     class GetProfileInfoAction: ProfileAction
+    class GetOrganizationsAction: ProfileAction
+    class GetRepositoriesAction: ProfileAction
     class LoginAccountInfoAction(private val info: LoginInfo): ProfileAction {
         fun get() = info
     }
-    class GetRepositoriesAction: ProfileAction
 }

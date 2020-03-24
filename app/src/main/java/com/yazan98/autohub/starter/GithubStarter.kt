@@ -22,21 +22,21 @@ class GithubStarter(private val username: String): GithubStarterImpl {
     }
 
     override suspend fun startSaveFollowings() {
-        withContext(Dispatchers.Main) {
-            profileRepository.getFollowingByToken().subscribe({
-                it.forEach {
-                    println("The Entity Response : $it")
-                }
-                DatabaseFollowingRepository().apply {
-                    this.sageEntities(getLocalAccountsByResponse(it))
-                }
-            }, {
-                it.printStackTrace()
-                it.message?.let {
-                    Timber.d("The Response : Error : $it")
-                }
-            })
-        }
+//        withContext(Dispatchers.Main) {
+//            profileRepository.getFollowingByToken().subscribe({
+//                it.forEach {
+//                    println("The Entity Response : $it")
+//                }
+//                DatabaseFollowingRepository().apply {
+//                    this.sageEntities(getLocalAccountsByResponse(it))
+//                }
+//            }, {
+//                it.printStackTrace()
+//                it.message?.let {
+//                    Timber.d("The Response : Error : $it")
+//                }
+//            })
+//        }
     }
 
     private fun getLocalAccountsByResponse(list: List<GithubUser>): List<GithubAccount> {
@@ -51,21 +51,21 @@ class GithubStarter(private val username: String): GithubStarterImpl {
     }
 
     override suspend fun startSaveFollowers() {
-        withContext(Dispatchers.Main) {
-            profileRepository.getFollowersByToken().subscribe({
-                it.forEach {
-                    println("The Entity Response : $it")
-                }
-                DatabaseFollowingRepository().apply {
-                    this.sageEntities(getLocalAccountsByResponse(it))
-                }
-            }, {
-                it.printStackTrace()
-                it.message?.let {
-                    Timber.d("The Response : Error : $it")
-                }
-            })
-        }
+//        withContext(Dispatchers.Main) {
+//            profileRepository.getFollowersByToken().subscribe({
+//                it.forEach {
+//                    println("The Entity Response : $it")
+//                }
+//                DatabaseFollowingRepository().apply {
+//                    this.sageEntities(getLocalAccountsByResponse(it))
+//                }
+//            }, {
+//                it.printStackTrace()
+//                it.message?.let {
+//                    Timber.d("The Response : Error : $it")
+//                }
+//            })
+//        }
     }
 
     override suspend fun startSaveProfileInfo() {

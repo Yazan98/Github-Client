@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.yazan98.autohub.fragments.ProfileFragment"
+        android:name="com.yazan98.autohub.fragments.main.ProfileFragment"
         android:label="ProfileFragment" >
 
         <action
