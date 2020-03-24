@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.TrendingAdapter
+import com.yazan98.autohub.dialogs.TrendingFilterDialog
 import com.yazan98.data.models.TrendingRepo
 import com.yazan98.domain.actions.TrendingRepositoryAction
 import com.yazan98.domain.models.TrendingRepositoryViewModel
@@ -22,14 +23,21 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class TrendingFragment @Inject constructor() :
-    VortexFragment<TredingRepositoryState, TrendingRepositoryAction, TrendingRepositoryViewModel>() {
+    VortexFragment<TredingRepositoryState, TrendingRepositoryAction, TrendingRepositoryViewModel>(),
+    TrendingFilterDialog.FilterListener {
 
     private val viewModel: TrendingRepositoryViewModel by viewModels()
+    private val trendingFilterDialog: TrendingFilterDialog by lazy {
+        TrendingFilterDialog()
+    }
+
     override suspend fun getController(): TrendingRepositoryViewModel {
         return viewModel
     }
 
     override fun initScreen(view: View) {
+
+        trendingFilterDialog.attachListener(this)
         lifecycleScope.launch {
             if (getController().getStateHandler().value == null) {
                 getController().execute(TrendingRepositoryAction.GetTrendingDailyRepositories())
@@ -38,7 +46,11 @@ class TrendingFragment @Inject constructor() :
 
         TrendingFilterButton?.apply {
             this.setOnClickListener {
-
+                activity?.let {
+                    it.supportFragmentManager?.let {
+                        trendingFilterDialog.show(it, "")
+                    }
+                }
             }
         }
     }
@@ -81,6 +93,16 @@ class TrendingFragment @Inject constructor() :
                     (this.adapter as TrendingAdapter).context = it
                     this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
+            }
+        }
+    }
+
+    override fun onTimeFilter(type: String) {
+        lifecycleScope.launch {
+            when (type) {
+                "daily" -> getController().execute(TrendingRepositoryAction.GetTrendingDailyRepositories())
+                "weekly" -> getController().execute(TrendingRepositoryAction.GetTrendingWeeklyRepositories())
+                "monthly" -> getController().execute(TrendingRepositoryAction.GetTrendingMonthlyRepositories())
             }
         }
     }

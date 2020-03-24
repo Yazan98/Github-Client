@@ -26,4 +26,10 @@
     <string name="pick_method">Pick Method</string>
     <string name="orgs">Organizations</string>
     <string name="trending">Trending Repositories</string>
+    <string name="daily">Daily</string>
+    <string name="monthly">Monthly</string>
+    <string name="weekly">Weekly</string>
+    <string name="language_name">Language Name</string>
+    <string name="apply">Apply</string>
+    <string name="reset">Reset</string>
 </resources>
