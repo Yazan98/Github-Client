@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.OrgsAdapter
 import com.yazan98.autohub.adapters.RepositoryAdapter
@@ -19,6 +20,7 @@ import com.yazan98.domain.state.ProfileState
 import io.vortex.android.ui.VortexErrorType
 import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.random.VortexImageLoaders
+import io.vortex.android.utils.random.VortexRecyclerViewDecoration
 import io.vortex.android.utils.ui.goneView
 import io.vortex.android.utils.ui.linearHorizontalLayout
 import io.vortex.android.utils.ui.linearVerticalLayout
@@ -106,6 +108,7 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
                     this.linearVerticalLayout(it)
                     this.adapter = RepositoryAdapter(response, repoListener)
                     (this.adapter as RepositoryAdapter).context = it
+                    this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
             }
         }
