@@ -33,4 +33,8 @@
     <string name="apply">Apply</string>
     <string name="reset">Reset</string>
     <string name="starred_repos">Starred Repositories</string>
+    <string name="info">Info</string>
+    <string name="branches">Branches</string>
+    <string name="commits">Commits</string>
+    <string name="repository_details">Repository Details</string>
 </resources>

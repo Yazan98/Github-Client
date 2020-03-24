@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/RepoDetails"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="always"
+        android:title="@string/info"/>
+
+    <item
+        android:id="@+id/BranchesButton"
+        android:icon="@drawable/branch"
+        app:showAsAction="always"
+        android:title="@string/branches"/>
+
+    <item
+        android:id="@+id/CommitsButton"
+        android:icon="@drawable/commit"
+        app:showAsAction="always"
+        android:title="@string/commits"/>
+
+</menu>

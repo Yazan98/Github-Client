@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/repo_nav.xml"
+    app:startDestination="@id/repositoryFragment2">
+
+    <fragment
+        android:id="@+id/repositoryFragment2"
+        android:name="com.yazan98.autohub.fragments.repo.RepositoryFragment"
+        android:label="RepositoryFragment" />
+</navigation>

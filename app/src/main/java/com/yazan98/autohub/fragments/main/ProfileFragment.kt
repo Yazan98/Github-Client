@@ -11,6 +11,8 @@ import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.OrgsAdapter
 import com.yazan98.autohub.adapters.RepositoryAdapter
 import com.yazan98.autohub.adapters.listeners.RepositoryListener
+import com.yazan98.autohub.screen.RepositoryScreen
+import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.models.GithubOrg
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
@@ -116,10 +118,11 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
 
     private val repoListener = object: RepositoryListener {
         override fun onRepoClicked(repo: GithubRepositoryModel) {
-            val data = Bundle()
-            data.putString("Username", repo.owner.login)
-            data.putString("RepoName", repo.name)
-            findNavController().navigate(R.id.action_profileFragment_to_repositoryFragment, data)
+            lifecycleScope.launch {
+                ApplicationPrefs.saveSelectedRepo(repo.name)
+                ApplicationPrefs.saveSelectedUsername(repo.owner.login)
+                startScreen<RepositoryScreen>(false)
+            }
         }
     }
 
