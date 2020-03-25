@@ -2,9 +2,11 @@ package com.yazan98.data.repos
 
 import com.yazan98.data.GithubRepository
 import com.yazan98.data.api.RepoApi
+import com.yazan98.data.models.GithubCommit
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubRepositoryReadme
 import io.reactivex.Flowable
+import io.reactivex.Single
 import io.vortex.android.models.VortexServiceProviderType
 import javax.inject.Inject
 
@@ -22,4 +24,10 @@ class RepoRepository @Inject constructor(): GithubRepository<RepoApi>(), RepoApi
         return getServiceProvider().getRepositoryReadmeFile(username, repoName)
     }
 
+    override fun getRepositoryCommits(
+        username: String,
+        repoName: String
+    ): Single<List<GithubCommit>> {
+        return getServiceProvider().getRepositoryCommits(username, repoName)
+    }
 }

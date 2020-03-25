@@ -1,8 +1,10 @@
 package com.yazan98.data.api
 
+import com.yazan98.data.models.GithubCommit
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubRepositoryReadme
 import io.reactivex.Flowable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -19,5 +21,11 @@ interface RepoApi {
         @Path("username") username: String,
         @Path("RepoName") repoName: String
     ): Flowable<GithubRepositoryReadme>
+
+    @GET("repos/{username}/{RepoName}/commits")
+    fun getRepositoryCommits(
+        @Path("username") username: String,
+        @Path("RepoName") repoName: String
+    ): Single<List<GithubCommit>>
 
 }

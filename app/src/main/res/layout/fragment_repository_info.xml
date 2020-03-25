@@ -62,8 +62,8 @@
            app:layout_constraintTop_toBottomOf="@+id/RepoDescription">
 
            <ImageView
-               android:layout_width="@dimen/_20sdp"
-               android:layout_height="@dimen/_20sdp"
+               android:layout_width="@dimen/_15sdp"
+               android:layout_height="@dimen/_15sdp"
                android:src="@drawable/black_star" />
 
            <TextView
@@ -75,8 +75,8 @@
                android:textSize="@dimen/_15sdp" />
 
            <ImageView
-               android:layout_width="@dimen/_20sdp"
-               android:layout_height="@dimen/_20sdp"
+               android:layout_width="@dimen/_15sdp"
+               android:layout_height="@dimen/_15sdp"
                android:src="@drawable/commit" />
 
            <TextView
@@ -88,9 +88,8 @@
                android:textSize="@dimen/_15sdp" />
 
            <ImageView
-               android:layout_width="@dimen/_20sdp"
-
-               android:layout_height="@dimen/_20sdp"
+               android:layout_width="@dimen/_15sdp"
+               android:layout_height="@dimen/_15sdp"
                android:src="@drawable/ic_problem" />
 
            <TextView

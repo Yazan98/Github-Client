@@ -42,7 +42,7 @@ class RepositoryAdapter @Inject constructor(
         }
 
         holder.username?.let {
-            it.text = data[position].owner.name
+            it.text = data[position].owner.login
         }
 
         holder.description?.let {
