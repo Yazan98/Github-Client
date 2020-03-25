@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/stars_nav.xml"
+    app:startDestination="@id/startsFragment">
+
+    <fragment
+        android:id="@+id/startsFragment"
+        android:name="com.yazan98.autohub.fragments.StartsFragment"
+        android:label="StartsFragment" />
+</navigation>

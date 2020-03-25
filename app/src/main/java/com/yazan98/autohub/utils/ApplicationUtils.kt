@@ -1,16 +1,14 @@
 package com.yazan98.autohub.utils
 
+import com.yazan98.autohub.R
 import com.yazan98.data.models.internal.Option
 
 object ApplicationUtils {
 
     fun getMainScreenOptions(): List<Option> {
         return arrayListOf(
-            Option(1, "Search"),
-            Option(2, "Gists"),
-            Option(3, "Stared Repositories"),
-            Option(3, "About App"),
-            Option(3, "Open Source Libraries")
+           Option(R.string.starred_repos, R.drawable.star),
+           Option(R.string.trending, R.drawable.trending)
         )
     }
 }

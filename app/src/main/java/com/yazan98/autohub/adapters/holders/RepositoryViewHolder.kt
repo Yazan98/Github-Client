@@ -9,12 +9,13 @@ import kotlinx.android.synthetic.main.row_repository.view.*
 import javax.inject.Inject
 
 class RepositoryViewHolder @Inject constructor(view: View): RecyclerView.ViewHolder(view) {
-    val lineColor: View? = view.RepoLineColor
-    val ownerIcon: SimpleDraweeView? = view.OwnerIcon
+    val ownerIcon: SimpleDraweeView? = view.RepoImage
+    val fullName: TextView? = view.RepoFullName
     val name: TextView? = view.RepoName
-    val description: TextView? = view.RepoDes
-    val iconLanguage: ImageView? = view.RepoLanguageIcon
-    val language: TextView? = view.LanguageRepo
-    val license: TextView? = view.licenseRepo
+    val description: TextView? = view.RepoDescription
+    val iconLanguage: ImageView? = view.LanguageIcon
+    val language: TextView? = view.RepoLanguage
+    val license: TextView? = view.RepoLicesnse
+    val username: TextView? = view.RepoOwner
     val row: View? = view.RepoItem
 }

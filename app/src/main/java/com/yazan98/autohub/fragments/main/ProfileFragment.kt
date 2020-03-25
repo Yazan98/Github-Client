@@ -6,10 +6,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.OrgsAdapter
 import com.yazan98.autohub.adapters.RepositoryAdapter
 import com.yazan98.autohub.adapters.listeners.RepositoryListener
+import com.yazan98.autohub.screen.RepositoryScreen
+import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.models.GithubOrg
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubUser
@@ -19,6 +22,7 @@ import com.yazan98.domain.state.ProfileState
 import io.vortex.android.ui.VortexErrorType
 import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.random.VortexImageLoaders
+import io.vortex.android.utils.random.VortexRecyclerViewDecoration
 import io.vortex.android.utils.ui.goneView
 import io.vortex.android.utils.ui.linearHorizontalLayout
 import io.vortex.android.utils.ui.linearVerticalLayout
@@ -106,6 +110,7 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
                     this.linearVerticalLayout(it)
                     this.adapter = RepositoryAdapter(response, repoListener)
                     (this.adapter as RepositoryAdapter).context = it
+                    this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
             }
         }
@@ -113,10 +118,11 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
 
     private val repoListener = object: RepositoryListener {
         override fun onRepoClicked(repo: GithubRepositoryModel) {
-            val data = Bundle()
-            data.putString("Username", repo.owner.login)
-            data.putString("RepoName", repo.name)
-            findNavController().navigate(R.id.action_profileFragment_to_repositoryFragment, data)
+            lifecycleScope.launch {
+                ApplicationPrefs.saveSelectedRepo(repo.name)
+                ApplicationPrefs.saveSelectedUsername(repo.owner.login)
+                startScreen<RepositoryScreen>(false)
+            }
         }
     }
 

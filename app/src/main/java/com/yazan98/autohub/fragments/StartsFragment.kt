@@ -72,7 +72,7 @@ class StartsFragment @Inject constructor() : VortexFragment<StartsState, StartsA
                     this.linearVerticalLayout(it)
                     this.adapter = RepositoryAdapter(response)
                     (this.adapter as RepositoryAdapter).context = it
-//                    this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
+                    this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
             }
         }

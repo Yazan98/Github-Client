@@ -5,12 +5,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.yazan98.autohub.R
+import com.yazan98.autohub.adapters.RepositoryFragmentsAdapter
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.internal.RepoInfo
 import com.yazan98.domain.actions.RepositoryAction
 import com.yazan98.domain.models.RepositoryViewModel
 import com.yazan98.domain.state.RepositoryState
 import io.vortex.android.ui.VortexErrorType
+import io.vortex.android.ui.fragment.VortexBaseFragment
 import io.vortex.android.ui.fragment.VortexFragment
 import kotlinx.android.synthetic.main.fragment_repository.*
 import kotlinx.coroutines.Dispatchers
@@ -18,64 +20,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class RepositoryFragment : VortexFragment<RepositoryState, RepositoryAction, RepositoryViewModel>() {
-
-    private val viewModel: RepositoryViewModel by viewModels()
-    override suspend fun getController(): RepositoryViewModel {
-        return viewModel
-    }
+class RepositoryFragment : VortexBaseFragment() {
 
     override fun initScreen(view: View) {
-        viewModel.readmeFile.observe(this, Observer { result ->
-            Timber.d("The Url : ${result}")
-            RepositoryReadmeFile?.let {
-                Timber.d("The Url : ${it}")
-                it.loadUrl(result)
+        RepositoryViewPager?.apply {
+            activity?.let {
+                this.adapter = RepositoryFragmentsAdapter(it.supportFragmentManager)
             }
-        })
-
-        lifecycleScope.launch {
-            arguments?.let { args ->
-                args.getString("Username")?.also {
-                    args.getString("RepoName")?.also { repoName ->
-                        getController().execute(RepositoryAction.GetRepoInfo(RepoInfo(it, repoName)))
-                        getController().execute(RepositoryAction.GetRepositoryReadme(RepoInfo(it, repoName)))
-                    }
-                }
-            }
-        }
-    }
-
-    override suspend fun getLoadingState(newState: Boolean) {
-        withContext(Dispatchers.Main) {
-            when(newState) {
-                true -> {
-
-                }
-
-                false -> {
-
-                }
-            }
-        }
-    }
-
-    override suspend fun onStateChanged(newState: RepositoryState) {
-        withContext(Dispatchers.IO) {
-            when (newState) {
-                is RepositoryState.ErrorState -> showError(newState.get(), VortexErrorType.SHORT_TOAST)
-                is RepositoryState.SuccessRepositoryState -> showRepoInfo(newState.get())
-            }
-        }
-    }
-
-    private suspend fun showRepoInfo(repo: GithubRepositoryModel) {
-        withContext(Dispatchers.Main) {
-            RepoNameField?.apply { this.text = repo.name }
-            RepoName?.apply { this.text = repo.full_name }
-            RepoBio?.apply { this.text = repo.description }
-            StarsNumber?.apply { this.text = "${repo.watchers_count} ${getString(R.string.stars)}" }
-            ForksNumber?.apply { this.text = "${repo.forks} ${getString(R.string.forks)}" }
         }
     }
 

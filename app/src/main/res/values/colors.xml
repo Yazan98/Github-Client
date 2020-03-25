@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#FF1744</color>
-    <color name="colorPrimaryDark">#FF1744</color>
-    <color name="colorAccent">#FF1744</color>
+    <color name="colorPrimary">#00B0FF</color>
+    <color name="colorPrimaryDark">#00B0FF</color>
+    <color name="colorAccent">#00B0FF</color>
     <color name="white">#fff</color>
     <color name="black">#000</color>
+    <color name="bg_screens">#DFDDDD</color>
 
     <color name="kot_language">#f18e33</color>
     <color name="vue">#2c3e50</color>

@@ -93,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/orgs"
+                android:textStyle="bold"
                 android:id="@+id/OrgsText"
                 android:textColor="@color/black" />
 
@@ -106,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/repositories"
+                android:textStyle="bold"
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView

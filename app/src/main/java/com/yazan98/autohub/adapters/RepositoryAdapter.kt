@@ -37,6 +37,14 @@ class RepositoryAdapter @Inject constructor(
             it.text = data[position].full_name
         }
 
+        holder.fullName?.let {
+            it.text = data[position].name
+        }
+
+        holder.username?.let {
+            it.text = data[position].owner.login
+        }
+
         holder.description?.let {
             it.text = data[position].description
         }
@@ -52,15 +60,9 @@ class RepositoryAdapter @Inject constructor(
         data[position].language?.apply {
             holder.iconLanguage?.let {
                 it.setImageBitmap(getCircleImage(this))
-                it.setBackgroundColor(context.getColor(R.color.white))
+//                it.setBackgroundColor(context.getColor(R.color.bg_screens))
             }
         }
-
-//        data[position].language?.apply {
-//            holder.lineColor?.let {
-//                it.setBackgroundResource(LanguageColorUtils.getColorByLanguage(this))
-//            }
-//        }
 
         data[position].license?.let { result ->
             holder.license?.let {
@@ -85,7 +87,7 @@ class RepositoryAdapter @Inject constructor(
 
         val canvas = Canvas(bitmap)
 
-        canvas.drawColor(context.getColor(R.color.white))
+//        canvas.drawColor(context.getColor(R.color.white))
 
         val paint = Paint()
         paint.style = Paint.Style.FILL
