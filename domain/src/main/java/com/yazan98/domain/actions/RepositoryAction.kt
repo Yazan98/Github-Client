@@ -5,6 +5,7 @@ import io.vortex.android.VortexAction
 
 interface RepositoryAction: VortexAction {
     class GetRepoTopics: RepositoryAction
+    class GetContributorsAction: RepositoryAction
     class GetRepoInfo(private val data: RepoInfo): RepositoryAction {
         fun get() = data
     }
