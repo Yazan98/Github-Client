@@ -5,6 +5,7 @@ import com.yazan98.data.api.RepoApi
 import com.yazan98.data.models.GithubCommit
 import com.yazan98.data.models.GithubRepositoryModel
 import com.yazan98.data.models.GithubRepositoryReadme
+import com.yazan98.data.models.GithubTopicResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.vortex.android.models.VortexServiceProviderType
@@ -30,4 +31,13 @@ class RepoRepository @Inject constructor(): GithubRepository<RepoApi>(), RepoApi
     ): Single<List<GithubCommit>> {
         return getServiceProvider().getRepositoryCommits(username, repoName)
     }
+
+    override fun getRepositoryTopics(
+        username: String,
+        repoName: String,
+        acceptHeader: String
+    ): Single<GithubTopicResponse> {
+        return getServiceProvider().getRepositoryTopics(username, repoName)
+    }
+
 }

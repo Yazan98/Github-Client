@@ -15,17 +15,21 @@ import javax.inject.Inject
 
 class RepositoryViewModel @Inject constructor(): VortexViewModel<RepositoryState, RepositoryAction>() {
 
+    private val repoInfo: MutableLiveData<RepoInfo> by lazy { MutableLiveData<RepoInfo>() }
+    val topics: MutableLiveData<List<String>> by lazy { MutableLiveData<List<String>>() }
     val readmeFile: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     private val repo: RepoRepository by lazy {
         ReposComponentImpl().getRepositoryComponent()
     }
 
     override suspend fun execute(newAction: RepositoryAction) {
-        withContext(Dispatchers.IO) {
-            when (newAction) {
-                is RepositoryAction.GetRepoInfo -> getRepoInfo(newAction.get())
-                is RepositoryAction.GetRepositoryReadme -> getRepoReadmeFile(newAction.get())
+        when (newAction) {
+            is RepositoryAction.GetRepoTopics -> getTopics()
+            is RepositoryAction.GetRepoInfo -> {
+                repoInfo.value = newAction.get()
+                getRepoInfo(newAction.get())
             }
+            is RepositoryAction.GetRepositoryReadme -> getRepoReadmeFile(newAction.get())
         }
     }
 
@@ -60,6 +64,23 @@ class RepositoryViewModel @Inject constructor(): VortexViewModel<RepositoryState
                     }
                 }
             }))
+        }
+    }
+
+    private suspend fun getTopics() {
+        withContext(Dispatchers.IO) {
+            repoInfo.value?.let {
+                addRxRequest(repo.getRepositoryTopics(it.username, it.repoName).subscribe({
+                    topics.postValue(it.names)
+                }, {
+                    it.message?.let {
+                        viewModelScope.launch {
+                            acceptNewState(RepositoryState.ErrorState(it))
+                            acceptLoadingState(false)
+                        }
+                    }
+                }))
+            }
         }
     }
 

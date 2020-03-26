@@ -8,7 +8,8 @@ import io.vortex.android.utils.random.VortexBaseAdapter
 import io.vortex.android.utils.random.VortexImageLoaders
 import javax.inject.Inject
 
-class CommitAdapter @Inject constructor(private val list: List<GithubCommit>): VortexBaseAdapter<CommitsViewHolder>() {
+class CommitAdapter @Inject constructor(private val list: List<GithubCommit>) :
+    VortexBaseAdapter<CommitsViewHolder>() {
 
     override fun getItemCount(): Int {
         return list.size
@@ -28,7 +29,13 @@ class CommitAdapter @Inject constructor(private val list: List<GithubCommit>): V
         }
 
         holder.icon?.let {
-            VortexImageLoaders.loadLargeImageWithFresco(list[position].author.avatar_url, it, 400, 400)
+            if (list[position].author.avatar_url != null) {
+                list[position].author.avatar_url?.let { it1 ->
+                    VortexImageLoaders.loadLargeImageWithFresco(
+                        it1, it, 400, 400
+                    )
+                }
+            }
         }
 
         holder.email?.let {

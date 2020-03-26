@@ -93,11 +93,9 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
                             }
 
                             1 -> lifecycleScope.launch {
-                                item.repo.full_name?.split("/")?.let {
-                                    ApplicationPrefs.saveSelectedRepo(it[0])
-                                    ApplicationPrefs.saveSelectedUsername(it[1])
-                                    startScreen<RepositoryScreen>(false)
-                                }
+                                ApplicationPrefs.saveSelectedRepo(item.repo.name.split("/")[0])
+                                ApplicationPrefs.saveSelectedUsername(item.repo.name.split("/")[1])
+                                startScreen<RepositoryScreen>(false)
                             }
                         }
                     }

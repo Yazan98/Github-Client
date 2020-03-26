@@ -59,7 +59,9 @@ class NotificationsAdapter @Inject constructor(
         }
 
         holder.ownerImage?.let {
-            VortexImageLoaders.loadLargeImageWithFresco(options[position].repository.owner.avatar_url, it, 30, 30)
+            options[position].repository.owner.avatar_url?.apply {
+                VortexImageLoaders.loadLargeImageWithFresco(this, it, 30, 30)
+            }
         }
 
         holder.reason?.let {

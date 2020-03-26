@@ -4,6 +4,7 @@ import com.yazan98.data.models.internal.RepoInfo
 import io.vortex.android.VortexAction
 
 interface RepositoryAction: VortexAction {
+    class GetRepoTopics: RepositoryAction
     class GetRepoInfo(private val data: RepoInfo): RepositoryAction {
         fun get() = data
     }

@@ -3,7 +3,7 @@ package com.yazan98.data.models
 data class GithubUser(
     var id: Long = 0,
     var login: String = "",
-    var avatar_url: String = "",
+    var avatar_url: String? = "",
     var url: String = "",
     var type: String = "",
     var name: String = "",
