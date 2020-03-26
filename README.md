@@ -27,7 +27,9 @@ Under Development
 
 ### Project Screenshots
 
-![Screenshot_20200326_221602_com yazan98 autohub](https://user-images.githubusercontent.com/29167110/77692936-6ac4ff80-6f9f-11ea-92a2-462148e049da.jpg){:height="50%" width="50%"}
+![New Project (2)](https://user-images.githubusercontent.com/29167110/77693737-bfb54580-6fa0-11ea-95fc-bdeb8be6af0d.png)
+
+![New Project (3)](https://user-images.githubusercontent.com/29167110/77693772-ccd23480-6fa0-11ea-8b1f-e4f4d5025f8f.png)
 
 
 ### Application Infrastructure
