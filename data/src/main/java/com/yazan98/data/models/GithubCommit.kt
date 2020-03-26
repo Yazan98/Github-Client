@@ -3,7 +3,7 @@ package com.yazan98.data.models
 data class GithubCommit(
     var node_id: String = "",
     var commit: CommitBody,
-    var author: GithubUser
+    var author: GithubUser?
 )
 
 data class CommitBody(
