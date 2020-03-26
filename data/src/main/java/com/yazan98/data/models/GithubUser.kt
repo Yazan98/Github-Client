@@ -3,7 +3,7 @@ package com.yazan98.data.models
 data class GithubUser(
     var id: Long = 0,
     var login: String = "",
-    var avatar_url: String = "",
+    var avatar_url: String? = "",
     var url: String = "",
     var type: String = "",
     var name: String = "",
@@ -19,5 +19,6 @@ data class GithubUser(
     var following: Long,
     var created_at: String = "",
     var updated_at: String = "",
-    var total_private_repos: Long = 0
+    var total_private_repos: Long = 0,
+    var contributions: Long = 0
 )

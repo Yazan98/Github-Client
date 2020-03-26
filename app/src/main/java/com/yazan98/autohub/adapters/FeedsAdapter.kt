@@ -32,7 +32,9 @@ class FeedsAdapter @Inject constructor(
         }
 
         holder.image?.let {
-            VortexImageLoaders.loadLargeImageWithFresco(response[position].actor.avatar_url, it, 700, 700)
+            response[position].actor.avatar_url?.apply {
+                VortexImageLoaders.loadLargeImageWithFresco(this, it, 700, 700)
+            }
         }
 
         holder.title?.let {

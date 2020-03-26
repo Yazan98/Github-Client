@@ -54,7 +54,9 @@ class RepositoryAdapter @Inject constructor(
         }
 
         holder.ownerIcon?.let {
-            VortexImageLoaders.loadLargeImageWithFresco(data[position].owner.avatar_url, it, 50,50)
+            data[position].owner.avatar_url?.apply {
+                VortexImageLoaders.loadLargeImageWithFresco(this, it, 50,50)
+            }
         }
 
         data[position].language?.apply {

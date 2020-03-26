@@ -9,7 +9,7 @@ class DatabaseAccountMapper : DatabaseMapper<GithubUser, GithubAccount> {
     override fun get(from: GithubUser): GithubAccount {
         val user = GithubAccount()
         user.id = from.id
-        user.avatar_url = from.avatar_url
+//        user.avatar_url = from.avatar_url
         user.entityType = "Following"
         user.login = from.login
         return user

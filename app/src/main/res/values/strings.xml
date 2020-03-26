@@ -37,4 +37,5 @@
     <string name="branches">Branches</string>
     <string name="commits">Commits</string>
     <string name="repository_details">Repository Details</string>
+    <string name="contributions">Contributions</string>
 </resources>

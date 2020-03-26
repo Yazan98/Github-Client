@@ -12,4 +12,5 @@ class TrendingViewHolder @Inject constructor(view: View): RecyclerView.ViewHolde
     val name: TextView? = view.RepoTrendingName
     val description: TextView? = view.TrendingRepoDes
     val stars: TextView? = view.RepoStarts
+    val item: View? = view.TrendingRepoItem
 }

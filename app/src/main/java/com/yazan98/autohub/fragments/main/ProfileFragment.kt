@@ -129,7 +129,9 @@ class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, Profil
     private suspend fun showProfileInfo(profile: GithubUser) {
         withContext(Dispatchers.Main) {
             ProfileIcon?.apply {
-                VortexImageLoaders.loadLargeImageWithFresco(profile.avatar_url, this, 80, 80)
+                profile.avatar_url?.let {
+                    VortexImageLoaders.loadLargeImageWithFresco(it, this, 80, 80)
+                }
             }
 
             ProfileName?.let {

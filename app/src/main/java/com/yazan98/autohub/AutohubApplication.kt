@@ -124,6 +124,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
         viewModel { FeedsViewModel() }
         viewModel { TrendingRepositoryViewModel() }
         viewModel { CommitsViewModel() }
+        viewModel { ContrbutersViewModel() }
     }
 
     private suspend fun configNotifications() {

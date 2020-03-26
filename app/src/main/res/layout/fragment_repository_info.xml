@@ -53,10 +53,11 @@
            app:layout_constraintTop_toBottomOf="@+id/RepoSubName" />
 
        <LinearLayout
+           android:id="@+id/linearLayout3"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
            android:layout_marginTop="@dimen/_30sdp"
+           android:orientation="horizontal"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toBottomOf="@+id/RepoDescription">
@@ -64,42 +65,54 @@
            <ImageView
                android:layout_width="@dimen/_15sdp"
                android:layout_height="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:src="@drawable/black_star" />
 
            <TextView
+               android:id="@+id/StarsNumber"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/StarsNumber"
                android:layout_marginEnd="@dimen/_30sdp"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
            <ImageView
                android:layout_width="@dimen/_15sdp"
                android:layout_height="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:src="@drawable/commit" />
 
            <TextView
+               android:id="@+id/ForksNumber"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/ForksNumber"
                android:layout_marginEnd="@dimen/_30sdp"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
            <ImageView
                android:layout_width="@dimen/_15sdp"
                android:layout_height="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:src="@drawable/ic_problem" />
 
            <TextView
+               android:id="@+id/ProblemsCount"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/ProblemsCount"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
        </LinearLayout>
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="@dimen/_10sdp"
+           android:id="@+id/TopicsRecycler"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 
