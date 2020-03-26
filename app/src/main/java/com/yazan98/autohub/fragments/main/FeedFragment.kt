@@ -10,6 +10,7 @@ import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.FeedsAdapter
 import com.yazan98.autohub.adapters.listeners.FeedsListener
 import com.yazan98.autohub.screen.RepositoryScreen
+import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.models.FeedResponse
 import com.yazan98.domain.actions.FeedsAction
 import com.yazan98.domain.models.FeedsViewModel
@@ -91,7 +92,13 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
 
                             }
 
-                            1 -> lifecycleScope.launch { startScreen<RepositoryScreen>(false) }
+                            1 -> lifecycleScope.launch {
+                                item.repo.full_name?.split("/")?.let {
+                                    ApplicationPrefs.saveSelectedRepo(it[0])
+                                    ApplicationPrefs.saveSelectedUsername(it[1])
+                                    startScreen<RepositoryScreen>(false)
+                                }
+                            }
                         }
                     }
                 }

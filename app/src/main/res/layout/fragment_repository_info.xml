@@ -64,6 +64,7 @@
            <ImageView
                android:layout_width="@dimen/_15sdp"
                android:layout_height="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:src="@drawable/black_star" />
 
            <TextView
@@ -72,11 +73,12 @@
                android:id="@+id/StarsNumber"
                android:layout_marginEnd="@dimen/_30sdp"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
            <ImageView
                android:layout_width="@dimen/_15sdp"
                android:layout_height="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:src="@drawable/commit" />
 
            <TextView
@@ -85,10 +87,11 @@
                android:id="@+id/ForksNumber"
                android:layout_marginEnd="@dimen/_30sdp"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
            <ImageView
                android:layout_width="@dimen/_15sdp"
+               android:layout_gravity="center"
                android:layout_height="@dimen/_15sdp"
                android:src="@drawable/ic_problem" />
 
@@ -97,7 +100,7 @@
                android:layout_height="wrap_content"
                android:id="@+id/ProblemsCount"
                android:textColor="@color/black"
-               android:textSize="@dimen/_15sdp" />
+               android:textSize="@dimen/_12sdp" />
 
        </LinearLayout>
 

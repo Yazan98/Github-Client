@@ -6,7 +6,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.TrendingAdapter
+import com.yazan98.autohub.adapters.TrendingRepoListener
 import com.yazan98.autohub.dialogs.TrendingFilterDialog
+import com.yazan98.autohub.screen.RepositoryScreen
+import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.models.TrendingRepo
 import com.yazan98.domain.actions.TrendingRepositoryAction
 import com.yazan98.domain.models.TrendingRepositoryViewModel
@@ -89,10 +92,20 @@ class TrendingFragment @Inject constructor() :
             activity?.let {
                 TrendingRecycler?.apply {
                     this.linearVerticalLayout(it)
-                    this.adapter = TrendingAdapter(result)
+                    this.adapter = TrendingAdapter(result, repoClicked)
                     (this.adapter as TrendingAdapter).context = it
                     this.addItemDecoration(VortexRecyclerViewDecoration(it, LinearLayoutManager.VERTICAL, 5))
                 }
+            }
+        }
+    }
+
+    private val repoClicked = object : TrendingRepoListener {
+        override fun onRepoClicked(repo: TrendingRepo) {
+            lifecycleScope.launch {
+                ApplicationPrefs.saveSelectedRepo(repo.author)
+                ApplicationPrefs.saveSelectedUsername(repo.name)
+                startScreen<RepositoryScreen>(false)
             }
         }
     }
