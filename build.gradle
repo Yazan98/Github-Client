@@ -10,7 +10,9 @@ buildscript {
             "FirebasePluginV"    : "4.3.1",
             "KtlintPluginV"      : "2.1.1",
             "FabricPluginV"      : "1.28.1",
-            "NavigationPluginV"  : "2.2.0-rc04"
+            "NavigationPluginV"  : "2.2.0-rc04",
+            "VortexPluginV"      : "1.0.0",
+            "RealmPluginV"       : "7.0.0-beta-SNAPSHOT"
     ]
 
     repositories {
@@ -33,7 +35,8 @@ buildscript {
         classpath "org.jmailen.gradle:kotlinter-gradle:${rootProject.ext.PluginsVersions.KtlintPluginV}"
         classpath "io.fabric.tools:gradle:${rootProject.ext.PluginsVersions.FabricPluginV}"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${rootProject.ext.PluginsVersions.NavigationPluginV}"
-        classpath "io.realm:realm-gradle-plugin:7.0.0-beta-SNAPSHOT"
+        classpath "gradle.plugin.io.vortex.gradle.plugin.dependencies:vortex-dependencies-plugin:${rootProject.ext.PluginsVersions.VortexPluginV}"
+        classpath "io.realm:realm-gradle-plugin:${rootProject.ext.PluginsVersions.RealmPluginV}"
     }
 
 }
@@ -64,24 +67,9 @@ subprojects {
         apply plugin: "${rootProject.ext.KotlinAndroidExPlugin}"
         apply plugin: "${rootProject.ext.KotlinKaptPlugin}"
         apply plugin: "${rootProject.ext.RealmPlugin}"
+        apply plugin: "${rootProject.ext.VortexPlugin}"
 
         android {
-
-//            signingConfigs {
-//                release {
-//                    storeFile file('Key Path')
-//                    storePassword 'Key Password'
-//                    keyAlias = 'Key Name'
-//                    keyPassword 'Key Password'
-//                }
-//
-//                debug {
-//                    storeFile file('Key Path')
-//                    storePassword 'Key Password'
-//                    keyAlias = 'Key Name'
-//                    keyPassword 'Key Password'
-//                }
-//            }
 
             compileSdkVersion rootProject.ext.compileSdkV
             buildToolsVersion "${rootProject.ext.BuildToolsVersion}"
@@ -107,7 +95,6 @@ subprojects {
                     manifestPlaceholders = [enableCrashReporting: "false"]
                     ext.enableCrashlytics = false
                     ext.alwaysUpdateBuildId = false
-//                    signingConfig signingConfigs.debug
                     proguardFiles getDefaultProguardFile("${rootProject.ext.ProguardFile}"), "${rootProject.ext.Proguard}"
                 }
 
@@ -117,7 +104,6 @@ subprojects {
                     ext.enableCrashlytics = true
                     manifestPlaceholders = [enableCrashReporting: "true"]
                     proguardFiles getDefaultProguardFile("${rootProject.ext.ProguardFile}"), "${rootProject.ext.Proguard}"
-//                    signingConfig signingConfigs.release
                 }
 
             }

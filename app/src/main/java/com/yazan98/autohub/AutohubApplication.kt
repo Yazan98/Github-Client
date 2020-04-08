@@ -19,6 +19,7 @@ import io.vortex.android.prefs.VortexPrefsConfig
 import io.vortex.android.ui.VortexMessageDelegation
 import io.vortex.android.utils.VortexApplication
 import io.vortex.android.utils.VortexConfiguration
+import io.vortex.android.utils.VortexScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.logger.Level
 import kotlinx.coroutines.GlobalScope
@@ -53,17 +54,12 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     override fun onCreate() {
         super.onCreate()
 
-        GlobalScope.launch {
+        VortexScope().launch {
             GithubStarter("").apply {
                 this.startSaveFollowers()
                 this.startSaveFollowings()
             }
-        }
 
-        FirebaseApp.initializeApp(this)
-        VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
-
-        GlobalScope.launch {
             configNotifications()
             VortexConfiguration
                 .registerLeakCanaryConfiguration()
@@ -88,8 +84,10 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 handleDatabaseError(ex.message)
             }
 
-//            startGithubActions()
         }
+
+        FirebaseApp.initializeApp(this)
+        VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
 
         Fresco.initialize(
             applicationContext,

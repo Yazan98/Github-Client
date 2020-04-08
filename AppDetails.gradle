@@ -11,6 +11,7 @@ ext {
     navigationPlugin = "androidx.navigation.safeargs.kotlin"
     EasyLauncherPlugin = "com.akaita.android.easylauncher"
     RealmPlugin = "realm-android"
+    VortexPlugin = "io.vortex.gradle.plugin.dependencies"
 
     //Android Details
     compileSdkV = 29
