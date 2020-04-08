@@ -27,7 +27,7 @@ import javax.inject.Inject
 class CommitsFragment @Inject constructor() : VortexFragment<CommitState, CommitAction, CommitsViewModel>() {
 
     private val viewModel: CommitsViewModel by viewModels()
-    override suspend fun getController(): CommitsViewModel {
+    override fun getController(): CommitsViewModel {
         return viewModel
     }
 

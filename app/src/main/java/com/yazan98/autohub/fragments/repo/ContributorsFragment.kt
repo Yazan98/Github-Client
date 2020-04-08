@@ -24,11 +24,7 @@ import javax.inject.Inject
 class ContributorsFragment @Inject constructor() : VortexFragment<ContributerState, ContributerAction, ContrbutersViewModel>() {
 
     private val viewModel: ContrbutersViewModel by viewModels()
-    override suspend fun getController(): ContrbutersViewModel {
-        return withContext(Dispatchers.IO) {
-            viewModel
-        }
-    }
+    override fun getController(): ContrbutersViewModel = viewModel
 
     override fun initScreen(view: View) {
         lifecycleScope.launch {

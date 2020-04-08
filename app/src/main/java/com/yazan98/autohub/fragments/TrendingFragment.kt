@@ -34,7 +34,7 @@ class TrendingFragment @Inject constructor() :
         TrendingFilterDialog()
     }
 
-    override suspend fun getController(): TrendingRepositoryViewModel {
+    override fun getController(): TrendingRepositoryViewModel {
         return viewModel
     }
 

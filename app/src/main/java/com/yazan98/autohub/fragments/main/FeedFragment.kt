@@ -30,8 +30,7 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
 
     private val viewModel: FeedsViewModel by viewModels()
     private val pickerItems: List<String> by lazy { arrayListOf("View Profile", "View Repository") }
-
-    override suspend fun getController(): FeedsViewModel = viewModel
+    override fun getController(): FeedsViewModel = viewModel
     override fun getLayoutRes(): Int {
         return R.layout.fragment_feeds
     }

@@ -36,7 +36,7 @@ class NotificationsFragment : VortexFragment<HomeState, HomeAction, Notification
         return R.layout.fragment_main
     }
 
-    override suspend fun getController(): NotificationsViewModel {
+    override fun getController(): NotificationsViewModel {
         return viewModel
     }
 

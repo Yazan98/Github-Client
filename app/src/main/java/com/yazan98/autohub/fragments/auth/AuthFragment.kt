@@ -45,7 +45,7 @@ class AuthFragment : VortexFragment<ProfileState, ProfileAction, ProfileViewMode
         }
     }
 
-    override suspend fun getController(): ProfileViewModel {
+    override fun getController(): ProfileViewModel {
         return profileViewModel
     }
 

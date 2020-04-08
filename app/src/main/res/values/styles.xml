@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="background">@color/bg_screens</item>
@@ -9,7 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowBackground">@drawable/bg_splash_screen</item>

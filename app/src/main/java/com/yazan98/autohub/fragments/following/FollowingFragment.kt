@@ -23,8 +23,7 @@ class FollowingFragment @Inject constructor():
     VortexFragment<FollowingState, FollowingAction, FollowingViewModel>() {
 
     private val viewModel: FollowingViewModel by viewModels()
-
-    override suspend fun getController(): FollowingViewModel {
+    override fun getController(): FollowingViewModel {
         return viewModel
     }
 

@@ -4,6 +4,7 @@ dependencies { configuration ->
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     rxJavaConfiguration(configuration)
     retrofitConfiguration(configuration)
+    vortexConfiguration(configuration)
     lifeCycleConfiguration(configuration)
     databaseConfiguration(configuration)
 }
@@ -20,4 +21,11 @@ private void retrofitConfiguration(configuration) {
     configuration.implementation DataConfiguration.RetrofitRxJavaAdapter
     configuration.implementation DataConfiguration.RetrofitIntercenptor
     configuration.implementation DataConfiguration.retrofitGsonConverter
+}
+
+private void vortexConfiguration(configuration) {
+    def VortexConfiguration = rootProject.ext.VortexConfiguration
+    configuration.implementation VortexConfiguration.VortexCore
+    configuration.implementation VortexConfiguration.VortexData
+    configuration.implementation VortexConfiguration.VortexPrefs
 }
