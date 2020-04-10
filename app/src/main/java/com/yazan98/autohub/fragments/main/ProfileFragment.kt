@@ -36,7 +36,7 @@ import javax.inject.Inject
 class ProfileFragment @Inject constructor(): VortexFragment<ProfileState, ProfileAction, ProfileViewModel>() {
 
     private val profileViewModel: ProfileViewModel by viewModels()
-    override suspend fun getController(): ProfileViewModel {
+    override fun getController(): ProfileViewModel {
         return profileViewModel
     }
 

@@ -9,6 +9,7 @@ import com.afollestad.materialdialogs.list.listItems
 import com.yazan98.autohub.R
 import com.yazan98.autohub.adapters.FeedsAdapter
 import com.yazan98.autohub.adapters.listeners.FeedsListener
+import com.yazan98.autohub.screen.ProfileScreen
 import com.yazan98.autohub.screen.RepositoryScreen
 import com.yazan98.data.ApplicationPrefs
 import com.yazan98.data.models.FeedResponse
@@ -30,8 +31,7 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
 
     private val viewModel: FeedsViewModel by viewModels()
     private val pickerItems: List<String> by lazy { arrayListOf("View Profile", "View Repository") }
-
-    override suspend fun getController(): FeedsViewModel = viewModel
+    override fun getController(): FeedsViewModel = viewModel
     override fun getLayoutRes(): Int {
         return R.layout.fragment_feeds
     }
@@ -88,8 +88,8 @@ class FeedFragment @Inject constructor() : VortexFragment<FeedsState, FeedsActio
                     listItems(items = pickerItems) { dialog, index, text ->
                         dialog.dismiss()
                         when (index) {
-                            0 -> {
-
+                            0 -> lifecycleScope.launch {
+                                startScreen<ProfileScreen>(false)
                             }
 
                             1 -> lifecycleScope.launch {

@@ -1,4 +1,4 @@
-package com.yazan98.autohub.fragments.following
+package com.yazan98.autohub.fragments.profile
 
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -23,8 +23,7 @@ class FollowingFragment @Inject constructor():
     VortexFragment<FollowingState, FollowingAction, FollowingViewModel>() {
 
     private val viewModel: FollowingViewModel by viewModels()
-
-    override suspend fun getController(): FollowingViewModel {
+    override fun getController(): FollowingViewModel {
         return viewModel
     }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="Auto_Hub.app" target="1.7" />
+      <module name="Auto_Hub.data" target="1.7" />
+      <module name="Auto_Hub.domain" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

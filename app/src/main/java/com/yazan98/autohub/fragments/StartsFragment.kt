@@ -25,8 +25,7 @@ import javax.inject.Inject
 class StartsFragment @Inject constructor() : VortexFragment<StartsState, StartsAction, StarsViewModel>() {
 
     private val viewModel: StarsViewModel by viewModels()
-
-    override suspend fun getController(): StarsViewModel {
+    override fun getController(): StarsViewModel {
         return viewModel
     }
 

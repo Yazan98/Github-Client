@@ -29,8 +29,8 @@ class CommitAdapter @Inject constructor(private val list: List<GithubCommit>) :
         }
 
         holder.icon?.let {
-            if (list[position].author.avatar_url != null) {
-                list[position].author.avatar_url?.let { it1 ->
+            if (list[position].author != null) {
+                list[position].author?.avatar_url?.let { it1 ->
                     VortexImageLoaders.loadLargeImageWithFresco(
                         it1, it, 400, 400
                     )

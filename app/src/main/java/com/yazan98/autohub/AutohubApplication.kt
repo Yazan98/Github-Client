@@ -12,16 +12,18 @@ import com.yazan98.data.ApplicationPrefs
 import com.yazan98.domain.models.*
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import io.vortex.android.keys.ImageLoader
 import io.vortex.android.keys.LoggerType
+import io.vortex.android.logger.config.VortexLoggerConfiguration
+import io.vortex.android.logger.config.VortexLoggerOptions
+import io.vortex.android.logger.keys.VortexLoggerLevel
+import io.vortex.android.logger.keys.VortexLoggerMode
+import io.vortex.android.logger.keys.VortexLoggingStatus
 import io.vortex.android.models.ui.VortexNotificationDetails
 import io.vortex.android.prefs.VortexPrefsConfig
 import io.vortex.android.ui.VortexMessageDelegation
 import io.vortex.android.utils.VortexApplication
 import io.vortex.android.utils.VortexConfiguration
 import kotlinx.coroutines.Dispatchers
-import org.koin.core.logger.Level
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import leakcanary.AppWatcher
@@ -29,12 +31,13 @@ import leakcanary.LeakCanary
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import timber.log.Timber
-import kotlin.coroutines.suspendCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler {
 
@@ -42,6 +45,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
         const val SHARED_PREFS_NAME = "AutoHubPrefs"
         const val SHARED_PREFS_MODE = Context.MODE_PRIVATE
         const val DATABASE_NAME = "autohub.realm"
+        const val AUTOHUB_LOGGING_TAG = "AutoHub"
         const val DATABASE_VERSION = 1L
     }
 
@@ -53,17 +57,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
     override fun onCreate() {
         super.onCreate()
 
-        GlobalScope.launch {
-            GithubStarter("").apply {
-                this.startSaveFollowers()
-                this.startSaveFollowings()
-            }
-        }
-
-        FirebaseApp.initializeApp(this)
-        VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
-
-        GlobalScope.launch {
+        AutohubScope.launch {
             configNotifications()
             VortexConfiguration
                 .registerLeakCanaryConfiguration()
@@ -75,6 +69,7 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 .registerExceptionHandler(this@AutohubApplication)
                 .registerVortexPermissionsSettings()
 
+            applyVortexLoggerConfiguration()
             AppWatcher.config = AppWatcher.config.copy(watchFragmentViews = true)
             LeakCanary.config = LeakCanary.config.copy(onHeapAnalyzedListener = LeakUploader())
 
@@ -88,8 +83,10 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 handleDatabaseError(ex.message)
             }
 
-//            startGithubActions()
         }
+
+        FirebaseApp.initializeApp(this)
+        VortexPrefsConfig.prefs = getSharedPreferences(SHARED_PREFS_NAME, SHARED_PREFS_MODE)
 
         Fresco.initialize(
             applicationContext,
@@ -97,11 +94,26 @@ class AutohubApplication : VortexApplication(), Thread.UncaughtExceptionHandler 
                 .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
                 .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER)
                 .experiment().setNativeCodeDisabled(true)
-                .build())
+                .build()
+        )
 
         startKoin {
             androidLogger(Level.DEBUG)
             modules(appModules)
+        }
+    }
+
+    private suspend fun applyVortexLoggerConfiguration() {
+        withContext(Dispatchers.IO) {
+            VortexLoggerConfiguration.init(
+                VortexLoggerOptions(
+                    globalTag = AUTOHUB_LOGGING_TAG,
+                    postMode = VortexLoggerMode.EQUAL,
+                    loggingStatus = VortexLoggingStatus.ENABLED,
+                    defaultLevel = VortexLoggerLevel.DEBUG,
+                    preMode = VortexLoggerMode.EQUAL
+                )
+            )
         }
     }
 

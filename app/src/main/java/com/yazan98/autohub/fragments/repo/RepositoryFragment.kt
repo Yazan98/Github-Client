@@ -28,6 +28,26 @@ class RepositoryFragment : VortexBaseFragment() {
                 this.adapter = RepositoryFragmentsAdapter(it.supportFragmentManager)
             }
         }
+
+        bottomNavigationView?.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.RepoDetails -> {
+                    RepositoryViewPager?.currentItem = 0
+                    true
+                }
+
+                R.id.BranchesButton -> {
+                    RepositoryViewPager?.currentItem = 1
+                    true
+                }
+
+                R.id.CommitsButton -> {
+                    RepositoryViewPager?.currentItem = 2
+                    true
+                }
+                else -> true
+            }
+        }
     }
 
     override fun getLayoutRes(): Int {

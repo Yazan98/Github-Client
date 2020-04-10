@@ -28,7 +28,7 @@ class RepositoryInfoFragment @Inject constructor() :
     VortexFragment<RepositoryState, RepositoryAction, RepositoryViewModel>() {
 
     private val viewModel: RepositoryViewModel by viewModels()
-    override suspend fun getController(): RepositoryViewModel {
+    override fun getController(): RepositoryViewModel {
         return viewModel
     }
 

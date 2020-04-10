@@ -5,6 +5,7 @@ apply plugin: "${rootProject.ext.KotlinKaptPlugin}"
 apply plugin: "${rootProject.ext.navigationPlugin}"
 apply plugin: "${rootProject.ext.RealmPlugin}"
 apply plugin: "${rootProject.ext.FirebasePlugin}"
+apply plugin: "${rootProject.ext.VortexPlugin}"
 
 android {
 
@@ -45,22 +46,6 @@ android {
         abortOnError false
     }
 
-//    signingConfigs {
-//        release {
-//            storeFile file('Key Path')
-//            storePassword 'Key Password'
-//            keyAlias = 'Key Name'
-//            keyPassword 'Key Password'
-//        }
-//
-//        debug {
-//            storeFile file('Key Path')
-//            storePassword 'Key Password'
-//            keyAlias = 'Key Name'
-//            keyPassword 'Key Password'
-//        }
-//    }
-
     buildTypes {
 
         debug {
@@ -68,7 +53,6 @@ android {
             debuggable true
             ext.enableCrashlytics = false
             ext.alwaysUpdateBuildId = false
-//            signingConfig signingConfigs.debug
             buildConfigField "String", "BASE_URL", "\"${ApiUrl}\""
             buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
             buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
@@ -80,7 +64,6 @@ android {
             debuggable false
             ext.alwaysUpdateBuildId = false
             ext.enableCrashlytics = true
-//            signingConfig signingConfigs.release
             buildConfigField "String", "GithubClientID", "\"${GithubClientID}\""
             buildConfigField "String", "GithubSecreteID", "\"${GithubSecreteID}\""
             proguardFiles getDefaultProguardFile("${rootProject.ext.ProguardFile}"), "${rootProject.ext.Proguard}"
@@ -91,10 +74,6 @@ android {
     sourceSets {
         main.java.srcDirs += "${rootProject.ext.KotlinSource}"
     }
-
-//    easylauncher {
-//        foregroundIconNames "${rootProject.ext.EasyLauncherForground}"
-//    }
 
     lintOptions {
         checkReleaseBuilds false
@@ -147,7 +126,6 @@ dependencies { configuration ->
     userInterfaceConfiguration(configuration)
     retrofitConfiguration(configuration)
     applicationConfiguration(configuration)
-    vortexConfiguration(configuration)
     daggerConfig(configuration)
     databaseConfiguration(configuration)
     implementation project(":data")
@@ -163,10 +141,6 @@ dependencies { configuration ->
     implementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.1'
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.2.1"
-    implementation "androidx.work:work-runtime-ktx:2.3.2"
-    implementation "androidx.work:work-rxjava2:2.3.2"
-    implementation "androidx.work:work-gcm:2.3.2"
-    androidTestImplementation "androidx.work:work-testing:2.3.2"
     implementation 'androidx.fragment:fragment-ktx:1.2.2'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
@@ -230,15 +204,4 @@ private void applicationConfiguration(configuration) {
     configuration.implementation ApplicationConfiguration.Timber
     configuration.implementation ApplicationConfiguration.MultiDexApp
     configuration.implementation ApplicationConfiguration.KotlinJdk
-}
-
-private void vortexConfiguration(configuration) {
-    def VortexConfiguration = rootProject.ext.VortexConfiguration
-    configuration.implementation VortexConfiguration.VortexUserInterface
-    configuration.implementation VortexConfiguration.VortexPermissions
-    configuration.implementation VortexConfiguration.VortexCore
-    configuration.implementation VortexConfiguration.VortexLocal
-    configuration.implementation VortexConfiguration.VortexData
-    configuration.implementation VortexConfiguration.VortexExtras
-    configuration.implementation VortexConfiguration.VortexPrefs
 }

@@ -3,8 +3,8 @@ package com.yazan98.autohub.utils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.yazan98.autohub.fragments.following.FollowersFragment
-import com.yazan98.autohub.fragments.following.FollowingFragment
+import com.yazan98.autohub.fragments.profile.FollowersFragment
+import com.yazan98.autohub.fragments.profile.FollowingFragment
 
 class FollowingViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 

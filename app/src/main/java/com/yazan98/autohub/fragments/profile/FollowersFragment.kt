@@ -1,4 +1,4 @@
-package com.yazan98.autohub.fragments.following
+package com.yazan98.autohub.fragments.profile
 
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -14,7 +14,6 @@ import io.vortex.android.ui.fragment.VortexFragment
 import io.vortex.android.utils.random.VortexRecyclerViewDecoration
 import io.vortex.android.utils.ui.linearVerticalLayout
 import kotlinx.android.synthetic.main.fragment_followers.*
-import kotlinx.android.synthetic.main.fragment_following.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,8 +23,7 @@ class FollowersFragment @Inject constructor():
     VortexFragment<FollowingState, FollowingAction, FollowingViewModel>() {
 
     private val viewModel: FollowingViewModel by viewModels()
-
-    override suspend fun getController(): FollowingViewModel {
+    override fun getController(): FollowingViewModel {
         return viewModel
     }
 

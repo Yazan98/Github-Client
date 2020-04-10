@@ -21,6 +21,10 @@ class HomeRepository : GithubRepository<HomeScreenApi>(), HomeScreenApi {
         return getServiceProvider().getStarredRepositories()
     }
 
+    override fun getProfileInfoByUsername(username: String): Single<GithubUser> {
+        return getServiceProvider().getProfileInfoByUsername(username)
+    }
+
     override fun getProfileInfo(): Single<GithubUser> {
         return getServiceProvider().getProfileInfo()
     }

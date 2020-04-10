@@ -1,6 +1,7 @@
 package com.yazan98.data
 
 import com.yazan98.data.repos.HomeRepository
+import com.yazan98.data.repos.ProfileRepository
 import com.yazan98.data.repos.RepoRepository
 import com.yazan98.data.repos.TrendingRepository
 
@@ -12,6 +13,8 @@ interface ReposComponent {
     fun getRepositoryComponent(): RepoRepository
 
     fun getTrendingRepository(): TrendingRepository
+
+    fun getProfileRepository(): ProfileRepository
 
     @motif.Objects
     open class Objects {
@@ -26,6 +29,10 @@ interface ReposComponent {
 
         fun getRepo(): RepoRepository {
             return RepoRepository()
+        }
+
+        fun getProfile(): ProfileRepository {
+            return ProfileRepository()
         }
 
     }
