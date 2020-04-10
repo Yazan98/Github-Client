@@ -55,7 +55,14 @@
             android:name=".screen.StarsScreen"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".screen.RepositoryScreen" />
+
+        <activity android:name=".screen.RepositoryScreen"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".screen.ProfileScreen"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
     </application>
 

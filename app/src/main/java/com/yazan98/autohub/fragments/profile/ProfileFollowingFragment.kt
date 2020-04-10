@@ -1,4 +1,4 @@
-package com.yazan98.autohub.fragments.following
+package com.yazan98.autohub.fragments.profile
 
 import android.view.View
 import com.yazan98.autohub.R

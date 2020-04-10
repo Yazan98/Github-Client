@@ -18,6 +18,9 @@ interface HomeScreenApi {
     @GET("user")
     fun getProfileInfo(): Single<GithubUser>
 
+    @GET("users/{Username}")
+    fun getProfileInfoByUsername(@Path("Username") username: String): Single<GithubUser>
+
     @GET("user/repos?type=all")
     fun getRepositories(@Query("sort") sort: String = "updated"): Single<List<GithubRepositoryModel>>
 
